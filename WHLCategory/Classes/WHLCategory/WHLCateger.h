@@ -32,7 +32,6 @@
 #import "UICollectionView+WHLRegisterCell.h"
 #import "UIViewController+WHLBarItem.h"
 #import "UIView+WHLNibLoad.h"
-#import "UIView+WHLCustomAlertView.h"
 #import "UITextField+WHLPlaceholder.h"
 #import "UIBarButtonItem+WHLCreate.h"
 

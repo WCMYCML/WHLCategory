@@ -43,7 +43,6 @@
 		CCF88D6B21054B13181880BA23D3C394 /* UIView+WHLCustomAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 28C2FA5314C7A4A305803CDB062F0350 /* UIView+WHLCustomAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D2B18C750B4ABAE51957A8F03D62E819 /* UICollectionView+WHLRegisterCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A66BF1BF10BDC566E4A42E5BA109815D /* UICollectionView+WHLRegisterCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DEEC0CFA39D4B481EDFE8A1C9EA331A9 /* UIView+WHLNibLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = C75E930A9579FC2D92671072021B547D /* UIView+WHLNibLoad.m */; };
-		E920DE428A049F808B986DA0A6A46BA1 /* WHLCateger.h in Headers */ = {isa = PBXBuildFile; fileRef = 227B32DA560453254C5DAD74B5EEA323 /* WHLCateger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EF705CAD7A00704B16248E1728B6313C /* NSString+WHLAES128.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB300D10954F2E4F8B67BC0A6A5EB17 /* NSString+WHLAES128.m */; };
 		F22D56E6850DF0CCC63BD738200C817A /* UIColor+WHLTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = 253EF9F4238D18EEF762459E1536B8F1 /* UIColor+WHLTransform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29F653822386F0E2ED04FD1E1425C81 /* UIView+WHLCornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E38FC3FC3AAD05AF71ED6841F79491A /* UIView+WHLCornerRadius.m */; };
@@ -65,19 +64,18 @@
 
 /* Begin PBXFileReference section */
 		035728C7FF87A0EFDE9F6385BA531002 /* UIViewController+WHLBarItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WHLBarItem.m"; sourceTree = "<group>"; };
-		0767D31E188D97B76265D46660BFFFFA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		0767D31E188D97B76265D46660BFFFFA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		09DC334EFAF332E6F215D42993EE9C5A /* WHLCategory.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = WHLCategory.modulemap; sourceTree = "<group>"; };
 		13EE6690B2F1C67E03E462D4800EB109 /* NSString+WHLAES128.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString+WHLAES128.h"; sourceTree = "<group>"; };
 		17AD2BDC2076FE083169625D629EA03C /* UIViewController+WHLBarItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WHLBarItem.h"; sourceTree = "<group>"; };
 		1AE2F10A4916379EE0CBC1CF305F6F46 /* UITextField+WHLPlaceholder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UITextField+WHLPlaceholder.m"; sourceTree = "<group>"; };
-		227B32DA560453254C5DAD74B5EEA323 /* WHLCateger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = WHLCateger.h; sourceTree = "<group>"; };
 		253EF9F4238D18EEF762459E1536B8F1 /* UIColor+WHLTransform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIColor+WHLTransform.h"; sourceTree = "<group>"; };
 		269CBB5FF1870956B7347A5DAFA64A41 /* Pods-WHLCategory_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WHLCategory_Tests-dummy.m"; sourceTree = "<group>"; };
 		28C2FA5314C7A4A305803CDB062F0350 /* UIView+WHLCustomAlertView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIView+WHLCustomAlertView.h"; sourceTree = "<group>"; };
 		2C1A031EF50F9944819EFAA6979C36D2 /* NSString+WHLAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString+WHLAdditions.h"; sourceTree = "<group>"; };
 		2E38FC3FC3AAD05AF71ED6841F79491A /* UIView+WHLCornerRadius.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIView+WHLCornerRadius.m"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		3833C3B16E8AE16A090F19494A1F55E9 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		3833C3B16E8AE16A090F19494A1F55E9 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		3A547117D5CDE9423C9CF0489C15D473 /* WHLCategory-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "WHLCategory-Info.plist"; sourceTree = "<group>"; };
 		3C4934A294BC7682EE6687882F37C0F2 /* UIView+WHLCornerRadius.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIView+WHLCornerRadius.h"; sourceTree = "<group>"; };
 		412D12C0BE415ED9DB1BF24AEB849D3E /* UIColor+WHLTransform.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIColor+WHLTransform.m"; sourceTree = "<group>"; };
@@ -98,16 +96,16 @@
 		8DE98B4DE7431AFBA12C7391D62DE436 /* UIView+WHLFrame.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIView+WHLFrame.m"; sourceTree = "<group>"; };
 		8EB2677993F7E71AA1AB85A17AC8FFD9 /* UIView+WHLNibLoad.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIView+WHLNibLoad.h"; sourceTree = "<group>"; };
 		95EA093CB8B40C76800434E3F0601D37 /* Pods-WHLCategory_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WHLCategory_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		9A2DEA2EF8FAEC2BE99D416493A4D3D8 /* WHLCategory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = WHLCategory.framework; path = WHLCategory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A2DEA2EF8FAEC2BE99D416493A4D3D8 /* WHLCategory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WHLCategory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C12DE33C53B04999DDE8D8CB3F884E5 /* UITextField+WHLPlaceholder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UITextField+WHLPlaceholder.h"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DB300D10954F2E4F8B67BC0A6A5EB17 /* NSString+WHLAES128.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSString+WHLAES128.m"; sourceTree = "<group>"; };
 		9DBA5825A0102BF79D29CA8D0C250043 /* UITextView+WHLPlaceholder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UITextView+WHLPlaceholder.h"; sourceTree = "<group>"; };
 		9F048F7F7A01EEDECEBF0089E52C0FE3 /* NSDate+WHLCategory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSDate+WHLCategory.m"; sourceTree = "<group>"; };
 		A3EF8C386B4BA442CB0960E677B9D1C2 /* NSDictionary+WHLCategory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+WHLCategory.h"; sourceTree = "<group>"; };
 		A66BF1BF10BDC566E4A42E5BA109815D /* UICollectionView+WHLRegisterCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+WHLRegisterCell.h"; sourceTree = "<group>"; };
-		AAF08C783758EADFDB89298C24B3C84E /* WHLCategory.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = WHLCategory.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		B1975042FC120B6BC7712100586406A1 /* Pods_WHLCategory_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WHLCategory_Tests.framework; path = "Pods-WHLCategory_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAF08C783758EADFDB89298C24B3C84E /* WHLCategory.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = WHLCategory.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B1975042FC120B6BC7712100586406A1 /* Pods_WHLCategory_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WHLCategory_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9F302F61EC3D70397D0EBD47FF91997 /* UITabBar+WHLTabBadgeView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+WHLTabBadgeView.m"; sourceTree = "<group>"; };
 		C33219FA78E6D7FBC96CF44DD0F60EDD /* WHLCategory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WHLCategory.release.xcconfig; sourceTree = "<group>"; };
 		C4BD5EBCFF0E8E5A06D85EEB9382DA84 /* WHLCategory-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WHLCategory-dummy.m"; sourceTree = "<group>"; };
@@ -257,7 +255,6 @@
 				C75E930A9579FC2D92671072021B547D /* UIView+WHLNibLoad.m */,
 				17AD2BDC2076FE083169625D629EA03C /* UIViewController+WHLBarItem.h */,
 				035728C7FF87A0EFDE9F6385BA531002 /* UIViewController+WHLBarItem.m */,
-				227B32DA560453254C5DAD74B5EEA323 /* WHLCateger.h */,
 			);
 			name = WHLCategory;
 			path = WHLCategory/Classes/WHLCategory;
@@ -331,7 +328,6 @@
 				CA6F2C575E51079F746E6A9BBF9DA2A8 /* UIView+WHLFrame.h in Headers */,
 				0499D91B424E8BC2B9A7C92FED0D1902 /* UIView+WHLNibLoad.h in Headers */,
 				82931E871CCEB9B03E9E16BAE5A2D66F /* UIViewController+WHLBarItem.h in Headers */,
-				E920DE428A049F808B986DA0A6A46BA1 /* WHLCateger.h in Headers */,
 				338D035C58D9374171017E2D5E1FB2E6 /* WHLCategory-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -620,8 +616,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
