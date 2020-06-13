@@ -1,0 +1,16 @@
+PODS:
+  - WHLCategory (0.1.0)
+
+DEPENDENCIES:
+  - WHLCategory (from `../`)
+
+EXTERNAL SOURCES:
+  WHLCategory:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  WHLCategory: 3b4f037b8500acc481b56999f0af9715133df223
+
+PODFILE CHECKSUM: fd56fac1daf834488022f84eeeffbc76cb9983d4
+
+COCOAPODS: 1.9.1
