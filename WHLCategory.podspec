@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'WHLCategory'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of WHLCategory.'
+  s.summary          = 'this is command used category'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -21,22 +21,22 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/WCMYCML/WHLCategory'
+  s.homepage         = 'https://github.com/WCMYCML'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'WCMYCML' => '443803599@qq.com' }
-  s.source           = { :git => 'https://github.com/WCMYCML/WHLCategory.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/WCMYCML/WHLCategory.git', :tag => "0.1.0" }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'WHLCategory/Classes/**/*'
+  s.source_files = 'WHLCategory/Classes/WHLCategory/*.{h,m}'
   
   # s.resource_bundles = {
   #   'WHLCategory' => ['WHLCategory/Assets/*.png']
   # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.public_header_files = 'WHLCategory/Classes/WHLCategory/WHLCateger.h'
+  s.frameworks = 'UIKit'
+  s.dependency 'MJRefresh', '~> 3.4.3'
 end
