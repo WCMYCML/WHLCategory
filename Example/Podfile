@@ -1,0 +1,6 @@
+use_frameworks!
+target 'WHLCategory_Tests' do
+  pod 'WHLCategory', :path => '../'
+  
+  
+end
