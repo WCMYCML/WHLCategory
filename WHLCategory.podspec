@@ -25,7 +25,7 @@ TODO: Add long description of the pod here.
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'WCMYCML' => '443803599@qq.com' }
-  s.source           = { :git => 'https://github.com/WCMYCML/WHLCategory.git', :tag => "0.1.1" }
+  s.source           = { :git => 'https://github.com/WCMYCML/WHLCategory.git', :tag => "0.1.2" }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'

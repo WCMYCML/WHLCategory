@@ -13,7 +13,7 @@
  *  通过key获取值，如果key不存在或者值为空则放回默认设置值
  *
  *  @param key   主键
- *  @param value 默认值
+ *  @param def 默认值
  */
 
 - (id)whl_GetObjectWithKey:(NSString *)key defaultValue:(id)def;
