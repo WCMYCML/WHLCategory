@@ -7,6 +7,7 @@
 //
 
 #import "UIScrollView+WHLMJRefresh.h"
+#import "UITableView+WHLFootNoDateView.h"
 #import "MJRefresh.h"
 
 @implementation UIScrollView (WHLMJRefresh)
@@ -48,7 +49,7 @@
 
     MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:refreshBlock];
     footer.stateLabel.numberOfLines = 0;
-    footer.stateLabel.textColor = CQ_999999_Color;
+    footer.stateLabel.textColor = [UIColor grayColor];
     [footer setTitle:@"上拉可以加载更多" forState:MJRefreshStateIdle];
     [footer setTitle:@"松开立即加载更多" forState:MJRefreshStatePulling];
     [footer setTitle:@"正在加载" forState:MJRefreshStateRefreshing];
@@ -59,7 +60,7 @@
 - (void)whl_ResetFootRefreshView {
     if ([self isKindOfClass:[UITableView class]]) {
         UITableView *currentSelf = (UITableView *)self;
-        currentSelf.isShowNoDateView =  0;
+        currentSelf.whl_isShowNoDateView =  0;
     }
 }
 
@@ -68,7 +69,7 @@
 
     if ([self isKindOfClass:[UITableView class]]) {
         UITableView *currentSelf = (UITableView *)self;
-        currentSelf.isShowNoDateView = noMoreData ? 1 : 0;
+        currentSelf.whl_isShowNoDateView = noMoreData ? 1 : 0;
     }
 
     if (self.mj_footer) {

@@ -32,3 +32,4 @@
 #import "UITextField+WHLPlaceholder.h"
 #import "UIBarButtonItem+WHLCreate.h"
 #import "UIScrollView+WHLMJRefresh.h"
+#import "UITableView+WHLFootNoDateView.h"

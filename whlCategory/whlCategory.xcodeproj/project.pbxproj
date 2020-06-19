@@ -32,10 +32,14 @@
 		231E8973249C9B6800397CB2 /* UITabBar+WHLTabBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E895B249C9B6800397CB2 /* UITabBar+WHLTabBadgeView.m */; };
 		231E8974249C9B6800397CB2 /* UIViewController+WHLBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E895C249C9B6800397CB2 /* UIViewController+WHLBarItem.m */; };
 		231E8975249C9B6800397CB2 /* UITableView+WHLRegisterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E8962249C9B6800397CB2 /* UITableView+WHLRegisterCell.m */; };
-		231E8978249CBA6500397CB2 /* UIScrollView+WHLMJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E8976249CBA6400397CB2 /* UIScrollView+WHLMJRefresh.m */; };
+		231E897B249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E8979249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.m */; };
+		231E897E249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E897D249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m */; };
+		3A7EE20BBC8C6ACFB5EA4BC9 /* Pods_whlCategory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B810854740E8DE516100554E /* Pods_whlCategory.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00718B2A203F712550E4E56A /* Pods-whlCategory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whlCategory.debug.xcconfig"; path = "Target Support Files/Pods-whlCategory/Pods-whlCategory.debug.xcconfig"; sourceTree = "<group>"; };
+		04E109A3EEB54AC3D35897C9 /* Pods-whlCategory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whlCategory.release.xcconfig"; path = "Target Support Files/Pods-whlCategory/Pods-whlCategory.release.xcconfig"; sourceTree = "<group>"; };
 		231E8922249C9B0700397CB2 /* whlCategory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whlCategory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		231E8925249C9B0700397CB2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		231E8926249C9B0700397CB2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -85,8 +89,11 @@
 		231E8961249C9B6800397CB2 /* UINavigationBar+WHLHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+WHLHandle.h"; sourceTree = "<group>"; };
 		231E8962249C9B6800397CB2 /* UITableView+WHLRegisterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+WHLRegisterCell.m"; sourceTree = "<group>"; };
 		231E8963249C9B6800397CB2 /* WHLCateger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHLCateger.h; sourceTree = "<group>"; };
-		231E8976249CBA6400397CB2 /* UIScrollView+WHLMJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+WHLMJRefresh.m"; sourceTree = "<group>"; };
-		231E8977249CBA6400397CB2 /* UIScrollView+WHLMJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+WHLMJRefresh.h"; sourceTree = "<group>"; };
+		231E8979249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+WHLFootNoDateView.m"; sourceTree = "<group>"; };
+		231E897A249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+WHLFootNoDateView.h"; sourceTree = "<group>"; };
+		231E897C249CC23000397CB2 /* UIScrollView+WHLMJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+WHLMJRefresh.h"; sourceTree = "<group>"; };
+		231E897D249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+WHLMJRefresh.m"; sourceTree = "<group>"; };
+		B810854740E8DE516100554E /* Pods_whlCategory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_whlCategory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,17 +101,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A7EE20BBC8C6ACFB5EA4BC9 /* Pods_whlCategory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		102D2D525F6E6F8D7BCDFF54 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				00718B2A203F712550E4E56A /* Pods-whlCategory.debug.xcconfig */,
+				04E109A3EEB54AC3D35897C9 /* Pods-whlCategory.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		231E8919249C9B0700397CB2 = {
 			isa = PBXGroup;
 			children = (
 				231E8924249C9B0700397CB2 /* whlCategory */,
 				231E8923249C9B0700397CB2 /* Products */,
+				102D2D525F6E6F8D7BCDFF54 /* Pods */,
+				C8C2A6109A9944CD7D341412 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,10 +160,12 @@
 			children = (
 				231E8949249C9B6800397CB2 /* NSDate+WHLCategory.h */,
 				231E8956249C9B6800397CB2 /* NSDate+WHLCategory.m */,
+				231E897C249CC23000397CB2 /* UIScrollView+WHLMJRefresh.h */,
+				231E897D249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m */,
 				231E895D249C9B6800397CB2 /* NSDictionary+WHLCategory.h */,
 				231E894A249C9B6800397CB2 /* NSDictionary+WHLCategory.m */,
-				231E8977249CBA6400397CB2 /* UIScrollView+WHLMJRefresh.h */,
-				231E8976249CBA6400397CB2 /* UIScrollView+WHLMJRefresh.m */,
+				231E897A249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.h */,
+				231E8979249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.m */,
 				231E8953249C9B6800397CB2 /* NSString+WHLAdditions.h */,
 				231E8941249C9B6800397CB2 /* NSString+WHLAdditions.m */,
 				231E8952249C9B6800397CB2 /* NSString+WHLAES128.h */,
@@ -181,6 +203,14 @@
 			path = WHLCategory;
 			sourceTree = "<group>";
 		};
+		C8C2A6109A9944CD7D341412 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B810854740E8DE516100554E /* Pods_whlCategory.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -188,9 +218,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 231E893B249C9B0800397CB2 /* Build configuration list for PBXNativeTarget "whlCategory" */;
 			buildPhases = (
+				B3C4541403E7DA3E16EBB79A /* [CP] Check Pods Manifest.lock */,
 				231E891E249C9B0700397CB2 /* Sources */,
 				231E891F249C9B0700397CB2 /* Frameworks */,
 				231E8920249C9B0700397CB2 /* Resources */,
+				3941156E8CE3A65C8FB77341 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -246,6 +278,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3941156E8CE3A65C8FB77341 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-whlCategory/Pods-whlCategory-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-whlCategory/Pods-whlCategory-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-whlCategory/Pods-whlCategory-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3C4541403E7DA3E16EBB79A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-whlCategory-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		231E891E249C9B0700397CB2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -260,7 +334,6 @@
 				231E8975249C9B6800397CB2 /* UITableView+WHLRegisterCell.m in Sources */,
 				231E8973249C9B6800397CB2 /* UITabBar+WHLTabBadgeView.m in Sources */,
 				231E8938249C9B0800397CB2 /* main.m in Sources */,
-				231E8978249CBA6500397CB2 /* UIScrollView+WHLMJRefresh.m in Sources */,
 				231E896C249C9B6800397CB2 /* NSString+WHLAppPath.m in Sources */,
 				231E8974249C9B6800397CB2 /* UIViewController+WHLBarItem.m in Sources */,
 				231E896F249C9B6800397CB2 /* UITextField+WHLPlaceholder.m in Sources */,
@@ -270,10 +343,12 @@
 				231E8965249C9B6800397CB2 /* NSString+WHLAdditions.m in Sources */,
 				231E892A249C9B0700397CB2 /* SceneDelegate.m in Sources */,
 				231E896B249C9B6800397CB2 /* UITextView+WHLPlaceholder.m in Sources */,
+				231E897E249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m in Sources */,
 				231E8966249C9B6800397CB2 /* NSString+WHLAES128.m in Sources */,
 				231E8964249C9B6800397CB2 /* UIView+WHLFrame.m in Sources */,
 				231E896E249C9B6800397CB2 /* NSDate+WHLCategory.m in Sources */,
 				231E896D249C9B6800397CB2 /* UIView+WHLCornerRadius.m in Sources */,
+				231E897B249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +486,7 @@
 		};
 		231E893C249C9B0800397CB2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00718B2A203F712550E4E56A /* Pods-whlCategory.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -429,6 +505,7 @@
 		};
 		231E893D249C9B0800397CB2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04E109A3EEB54AC3D35897C9 /* Pods-whlCategory.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

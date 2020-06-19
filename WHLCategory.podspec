@@ -80,7 +80,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/WCMYCML/WHLCategory.git", :tag => "0.1.3" }
+  spec.source       = { :git => "https://github.com/WCMYCML/WHLCategory.git", :tag => "0.1.4" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
