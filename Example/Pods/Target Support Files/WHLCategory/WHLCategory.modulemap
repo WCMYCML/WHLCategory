@@ -1,6 +1,0 @@
-framework module WHLCategory {
-  umbrella header "WHLCategory-umbrella.h"
-
-  export *
-  module * { export * }
-}
