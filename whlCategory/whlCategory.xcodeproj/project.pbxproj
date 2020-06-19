@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -114,7 +114,6 @@
 				00718B2A203F712550E4E56A /* Pods-whlCategory.debug.xcconfig */,
 				04E109A3EEB54AC3D35897C9 /* Pods-whlCategory.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -160,12 +159,8 @@
 			children = (
 				231E8949249C9B6800397CB2 /* NSDate+WHLCategory.h */,
 				231E8956249C9B6800397CB2 /* NSDate+WHLCategory.m */,
-				231E897C249CC23000397CB2 /* UIScrollView+WHLMJRefresh.h */,
-				231E897D249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m */,
 				231E895D249C9B6800397CB2 /* NSDictionary+WHLCategory.h */,
 				231E894A249C9B6800397CB2 /* NSDictionary+WHLCategory.m */,
-				231E897A249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.h */,
-				231E8979249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.m */,
 				231E8953249C9B6800397CB2 /* NSString+WHLAdditions.h */,
 				231E8941249C9B6800397CB2 /* NSString+WHLAdditions.m */,
 				231E8952249C9B6800397CB2 /* NSString+WHLAES128.h */,
@@ -180,8 +175,12 @@
 				231E8958249C9B6800397CB2 /* UIColor+WHLTransform.m */,
 				231E8961249C9B6800397CB2 /* UINavigationBar+WHLHandle.h */,
 				231E894D249C9B6800397CB2 /* UINavigationBar+WHLHandle.m */,
+				231E897C249CC23000397CB2 /* UIScrollView+WHLMJRefresh.h */,
+				231E897D249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m */,
 				231E8944249C9B6800397CB2 /* UITabBar+WHLTabBadgeView.h */,
 				231E895B249C9B6800397CB2 /* UITabBar+WHLTabBadgeView.m */,
+				231E897A249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.h */,
+				231E8979249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.m */,
 				231E894C249C9B6800397CB2 /* UITableView+WHLRegisterCell.h */,
 				231E8962249C9B6800397CB2 /* UITableView+WHLRegisterCell.m */,
 				231E8947249C9B6800397CB2 /* UITextField+WHLPlaceholder.h */,
