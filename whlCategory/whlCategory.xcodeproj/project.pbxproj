@@ -32,6 +32,7 @@
 		231E8973249C9B6800397CB2 /* UITabBar+WHLTabBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E895B249C9B6800397CB2 /* UITabBar+WHLTabBadgeView.m */; };
 		231E8974249C9B6800397CB2 /* UIViewController+WHLBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E895C249C9B6800397CB2 /* UIViewController+WHLBarItem.m */; };
 		231E8975249C9B6800397CB2 /* UITableView+WHLRegisterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E8962249C9B6800397CB2 /* UITableView+WHLRegisterCell.m */; };
+		231E8978249CBA6500397CB2 /* UIScrollView+WHLMJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E8976249CBA6400397CB2 /* UIScrollView+WHLMJRefresh.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,8 @@
 		231E8961249C9B6800397CB2 /* UINavigationBar+WHLHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+WHLHandle.h"; sourceTree = "<group>"; };
 		231E8962249C9B6800397CB2 /* UITableView+WHLRegisterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+WHLRegisterCell.m"; sourceTree = "<group>"; };
 		231E8963249C9B6800397CB2 /* WHLCateger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHLCateger.h; sourceTree = "<group>"; };
+		231E8976249CBA6400397CB2 /* UIScrollView+WHLMJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+WHLMJRefresh.m"; sourceTree = "<group>"; };
+		231E8977249CBA6400397CB2 /* UIScrollView+WHLMJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+WHLMJRefresh.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +142,8 @@
 				231E8956249C9B6800397CB2 /* NSDate+WHLCategory.m */,
 				231E895D249C9B6800397CB2 /* NSDictionary+WHLCategory.h */,
 				231E894A249C9B6800397CB2 /* NSDictionary+WHLCategory.m */,
+				231E8977249CBA6400397CB2 /* UIScrollView+WHLMJRefresh.h */,
+				231E8976249CBA6400397CB2 /* UIScrollView+WHLMJRefresh.m */,
 				231E8953249C9B6800397CB2 /* NSString+WHLAdditions.h */,
 				231E8941249C9B6800397CB2 /* NSString+WHLAdditions.m */,
 				231E8952249C9B6800397CB2 /* NSString+WHLAES128.h */,
@@ -255,6 +260,7 @@
 				231E8975249C9B6800397CB2 /* UITableView+WHLRegisterCell.m in Sources */,
 				231E8973249C9B6800397CB2 /* UITabBar+WHLTabBadgeView.m in Sources */,
 				231E8938249C9B0800397CB2 /* main.m in Sources */,
+				231E8978249CBA6500397CB2 /* UIScrollView+WHLMJRefresh.m in Sources */,
 				231E896C249C9B6800397CB2 /* NSString+WHLAppPath.m in Sources */,
 				231E8974249C9B6800397CB2 /* UIViewController+WHLBarItem.m in Sources */,
 				231E896F249C9B6800397CB2 /* UITextField+WHLPlaceholder.m in Sources */,

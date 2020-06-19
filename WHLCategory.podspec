@@ -25,9 +25,10 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
+ "This is a commonly used classification in my project"
                    DESC
 
-  spec.homepage     = "http://EXAMPLE/WHLCategory"
+  spec.homepage     = "https://github.com/WCMYCML/WHLCategory"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -38,7 +39,7 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  spec.license      = "MIT (example)"
+  spec.license      = "MIT"
   # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -52,7 +53,7 @@ Pod::Spec.new do |spec|
   #  profile URL.
   #
 
-  spec.author             = { "WCMYCML" => "443803599@qq.com" }
+  spec.author             = { "WCMYCML" => "wcmycml@163.com" }
   # Or just: spec.author    = "WCMYCML"
   # spec.authors            = { "WCMYCML" => "443803599@qq.com" }
   # spec.social_media_url   = "https://twitter.com/WCMYCML"
@@ -63,8 +64,8 @@ Pod::Spec.new do |spec|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  # spec.platform     = :ios
-  # spec.platform     = :ios, "5.0"
+   spec.platform     = :ios
+   spec.platform     = :ios, "9.0"
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
@@ -79,7 +80,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "http://EXAMPLE/WHLCategory.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/WCMYCML/WHLCategory.git", :tag => "0.1.3" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -90,10 +91,10 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "Classes", "Classes/**/*.{h,m}"
-  spec.exclude_files = "Classes/Exclude"
+  spec.source_files  = "whlCategory/whlCategory/WHLCategory/*.{h,m}"
+  #spec.exclude_files = "Classes/Exclude"
 
-  # spec.public_header_files = "Classes/**/*.h"
+  #spec.public_header_files = "whlCategory/whlCategory/WHLCategory/WHLCateger.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -129,9 +130,9 @@ Pod::Spec.new do |spec|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  # spec.requires_arc = true
+  spec.requires_arc = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # spec.dependency "JSONKit", "~> 1.4"
+   spec.dependency "MJRefresh"
 
 end
