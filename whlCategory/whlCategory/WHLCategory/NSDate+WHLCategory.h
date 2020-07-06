@@ -16,63 +16,63 @@
 @interface NSDate (WHLCategory)
 
 
-- (NSString *)timeIntervalDescription;//距离当前的时间间隔描述
-- (NSString *)minuteDescription;/*精确到分钟的日期描述*/
-- (NSString *)formattedTime;
-- (NSString *)formattedDateDescription;//格式化日期描述
-- (double)timeIntervalSince1970InMilliSecond;
-+ (NSDate *)dateWithTimeIntervalInMilliSecondSince1970:(double)timeIntervalInMilliSecond;
-+ (NSString *)formattedTimeFromTimeInterval:(long long)time;
+- (NSString *)whl_timeIntervalDescription;//距离当前的时间间隔描述
+- (NSString *)whl_minuteDescription;/*精确到分钟的日期描述*/
+- (NSString *)whl_formattedTime;
+- (NSString *)whl_formattedDateDescription;//格式化日期描述
+- (double)whl_timeIntervalSince1970InMilliSecond;
++ (NSDate *)whl_dateWithTimeIntervalInMilliSecondSince1970:(double)timeIntervalInMilliSecond;
++ (NSString *)whl_formattedTimeFromTimeInterval:(long long)time;
 // Relative dates from the current date
-+ (NSDate *) dateTomorrow;
-+ (NSDate *) dateYesterday;
-+ (NSDate *) dateWithDaysFromNow: (NSInteger) days;
-+ (NSDate *) dateWithDaysBeforeNow: (NSInteger) days;
-+ (NSDate *) dateWithHoursFromNow: (NSInteger) dHours;
-+ (NSDate *) dateWithHoursBeforeNow: (NSInteger) dHours;
-+ (NSDate *) dateWithMinutesFromNow: (NSInteger) dMinutes;
-+ (NSDate *) dateWithMinutesBeforeNow: (NSInteger) dMinutes;
++ (NSDate *)whl_dateTomorrow;
++ (NSDate *)whl_dateYesterday;
++ (NSDate *)whl_dateWithDaysFromNow: (NSInteger) days;
++ (NSDate *)whl_dateWithDaysBeforeNow: (NSInteger) days;
++ (NSDate *)whl_dateWithHoursFromNow: (NSInteger) dHours;
++ (NSDate *)whl_dateWithHoursBeforeNow: (NSInteger) dHours;
++ (NSDate *)whl_dateWithMinutesFromNow: (NSInteger) dMinutes;
++ (NSDate *)whl_dateWithMinutesBeforeNow: (NSInteger) dMinutes;
 
 // Comparing dates
-- (BOOL) isEqualToDateIgnoringTime: (NSDate *) aDate;
-- (BOOL) isToday;
-- (BOOL) isTomorrow;
-- (BOOL) isYesterday;
-- (BOOL) isSameWeekAsDate: (NSDate *) aDate;
-- (BOOL) isThisWeek;
-- (BOOL) isNextWeek;
-- (BOOL) isLastWeek;
-- (BOOL) isSameMonthAsDate: (NSDate *) aDate;
-- (BOOL) isThisMonth;
-- (BOOL) isSameYearAsDate: (NSDate *) aDate;
-- (BOOL) isThisYear;
-- (BOOL) isNextYear;
-- (BOOL) isLastYear;
-- (BOOL) isEarlierThanDate: (NSDate *) aDate;
-- (BOOL) isLaterThanDate: (NSDate *) aDate;
-- (BOOL) isInFuture;
-- (BOOL) isInPast;
+- (BOOL)whl_isEqualToDateIgnoringTime: (NSDate *) aDate;
+- (BOOL)whl_isToday;
+- (BOOL)whl_isTomorrow;
+- (BOOL)whl_isYesterday;
+- (BOOL)whl_isSameWeekAsDate: (NSDate *) aDate;
+- (BOOL)whl_isThisWeek;
+- (BOOL)whl_isNextWeek;
+- (BOOL)whl_isLastWeek;
+- (BOOL)whl_isSameMonthAsDate: (NSDate *) aDate;
+- (BOOL)whl_isThisMonth;
+- (BOOL)whl_isSameYearAsDate: (NSDate *) aDate;
+- (BOOL)whl_isThisYear;
+- (BOOL)whl_isNextYear;
+- (BOOL)whl_isLastYear;
+- (BOOL)whl_isEarlierThanDate: (NSDate *) aDate;
+- (BOOL)whl_isLaterThanDate: (NSDate *) aDate;
+- (BOOL)whl_isInFuture;
+- (BOOL)whl_isInPast;
 
 // Date roles
-- (BOOL) isTypicallyWorkday;
-- (BOOL) isTypicallyWeekend;
+- (BOOL)whl_isTypicallyWorkday;
+- (BOOL)whl_isTypicallyWeekend;
 
 // Adjusting dates
-- (NSDate *) dateByAddingDays: (NSInteger) dDays;
-- (NSDate *) dateBySubtractingDays: (NSInteger) dDays;
-- (NSDate *) dateByAddingHours: (NSInteger) dHours;
-- (NSDate *) dateBySubtractingHours: (NSInteger) dHours;
-- (NSDate *) dateByAddingMinutes: (NSInteger) dMinutes;
-- (NSDate *) dateBySubtractingMinutes: (NSInteger) dMinutes;
-- (NSDate *) dateAtStartOfDay;
+- (NSDate *)whl_dateByAddingDays: (NSInteger) dDays;
+- (NSDate *)whl_dateBySubtractingDays: (NSInteger) dDays;
+- (NSDate *)whl_dateByAddingHours: (NSInteger) dHours;
+- (NSDate *)whl_dateBySubtractingHours: (NSInteger) dHours;
+- (NSDate *)whl_dateByAddingMinutes: (NSInteger) dMinutes;
+- (NSDate *)whl_dateBySubtractingMinutes: (NSInteger) dMinutes;
+- (NSDate *)whl_dateAtStartOfDay;
 
 // Retrieving intervals
-- (NSInteger) minutesAfterDate: (NSDate *) aDate;
-- (NSInteger) minutesBeforeDate: (NSDate *) aDate;
-- (NSInteger) hoursAfterDate: (NSDate *) aDate;
-- (NSInteger) hoursBeforeDate: (NSDate *) aDate;
-- (NSInteger) daysAfterDate: (NSDate *) aDate;
-- (NSInteger) daysBeforeDate: (NSDate *) aDate;
+- (NSInteger)whl_minutesAfterDate: (NSDate *) aDate;
+- (NSInteger)whl_minutesBeforeDate: (NSDate *) aDate;
+- (NSInteger)whl_hoursAfterDate: (NSDate *) aDate;
+- (NSInteger)whl_hoursBeforeDate: (NSDate *) aDate;
+- (NSInteger)whl_daysAfterDate: (NSDate *) aDate;
+- (NSInteger)whl_daysBeforeDate: (NSDate *) aDate;
 - (NSInteger)distanceInDaysToDate:(NSDate *)anotherDate;
 
 // Decomposing dates
@@ -98,48 +98,48 @@
 
 
 //将时间转换成00:00:00格式
-- (NSString *)formatPlayTime:(NSTimeInterval)duration;
+- (NSString *)whl_formatPlayTime:(NSTimeInterval)duration;
 
 //北京时间转化为当地时间的方法
-+(NSDate *)getLocationTimefromBeiJingTime:(NSDate*)beijingTime;
++(NSDate *)whl_getLocationTimefromBeiJingTime:(NSDate*)beijingTime;
 
 //当地时间转化为北京时间
-+(NSDate *)getBeiJingTimeFromLocationTime:(NSDate*)CLocationTimsa;
++(NSDate *)whl_getBeiJingTimeFromLocationTime:(NSDate*)CLocationTimsa;
 
 //世界标准时间转换为系统时区对应时间（ps: 时间后面有＋0000 表示的是当前时间是个世界时间。）
-+ (NSDate *)getNowDateFromatAnDate:(NSDate *)anyDate;
++ (NSDate *)whl_getNowDateFromatAnDate:(NSDate *)anyDate;
 
 //将本地日期字符串转为UTC日期字符串
-+ (NSString *)getUTCFormateLocalDate:(NSString *)localDate;
++ (NSString *)whl_getUTCFormateLocalDate:(NSString *)localDate;
 
-+ (NSString *)getLocalDateFormateUTCDate:(NSString *)utcDate;
++ (NSString *)whl_getLocalDateFormateUTCDate:(NSString *)utcDate;
 
 //时间转换为指定的字符串
-+(NSString *)dateChangString:(NSDate*)newTimeDate WithFormater:(NSString *)formaterStr addTimeZone:(BOOL)addTimeZone;
++(NSString *)whl_dateChangString:(NSDate*)newTimeDate WithFormater:(NSString *)formaterStr addTimeZone:(BOOL)addTimeZone;
 //字符串转化为时间数据
-+(NSDate *)StringChangDate:(NSString*)timeString WithFormater:(NSString *)formaterStr addTimeZone:(BOOL)addTimeZone;
++(NSDate *)whl_StringChangDate:(NSString*)timeString WithFormater:(NSString *)formaterStr addTimeZone:(BOOL)addTimeZone;
 
 //转换旧的时间格式为一种新的时间格式
-+ (NSDate *)switchOldDate:(NSDate *)oldDate withNewFormater:(NSString *)NewFormaterStr oldFormater:(NSString *)oldFormater;
++ (NSDate *)whl_switchOldDate:(NSDate *)oldDate withNewFormater:(NSString *)NewFormaterStr oldFormater:(NSString *)oldFormater;
 
 /**
  依照某种格式比较2个时间大小
  @return   NSOrderedDescending oneDay>anotherDay \\ NSOrderedAscending oneDay<anotherDay
  */
-+(NSComparisonResult)compareOneDay:(NSString *)oneDay withAnotherDay:(NSString *)anotherDay andTheFormater:(NSString *)formaterStr;
++(NSComparisonResult)whl_compareOneDay:(NSString *)oneDay withAnotherDay:(NSString *)anotherDay andTheFormater:(NSString *)formaterStr;
 
 
-+(NSString *)getDateForMateStrWithDate:(NSDate *)date;
++(NSString *)whl_getDateForMateStrWithDate:(NSDate *)date;
 /**
   根据日期返回对应星座
  */
-+ (NSString *)constellationStrWithFormater:(NSString *)formaterStr formDate:(NSDate *)date;
++ (NSString *)whl_constellationStrWithFormater:(NSString *)formaterStr formDate:(NSDate *)date;
 
 
 /**
  根据日期返回年龄
  */
-+ (NSInteger )getYearWithDate:(NSDate *)date;
++ (NSInteger )whl_getYearWithDate:(NSDate *)date;
 
 
 @end

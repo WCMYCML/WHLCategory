@@ -16,7 +16,7 @@
     return view;
 }
 
-+ (instancetype)whl_CreatFromNibWithClassName:(NSString *)classStr WithFrame:(CGRect)frame {
++ (instancetype)whl_creatFromNibWithClassName:(NSString *)classStr WithFrame:(CGRect)frame {
     UIView *view = [[[NSBundle mainBundle] loadNibNamed:classStr owner:nil options:nil] firstObject];
     view.frame = frame;
     return view;

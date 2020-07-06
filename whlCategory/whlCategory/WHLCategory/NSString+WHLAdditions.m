@@ -87,7 +87,7 @@
 
 @implementation NSString (WHLAdditions)
 
-- (NSString *)formatCurrency {
+- (NSString *)whl_formatCurrency {
     NSString *nstr = [NSString stringWithFormat:@"%.2f", [self doubleValue]];
     nstr = [nstr stringByReplacingOccurrencesOfString:@".00" withString:@""];
     return nstr;
@@ -99,7 +99,7 @@
     //    return [self formatJpAmountString];
 }
 
-- (NSString *)formatCurrencyStyleWithString
+- (NSString *)whl_formatCurrencyStyleWithString
 {
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     numberFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
@@ -116,7 +116,7 @@
     return formattedNumberString;
 }
 
-- (NSString *)formatJpAmountString
+- (NSString *)whl_formatJpAmountString
 {
     NSDecimalNumber *multiplierNumber = [NSDecimalNumber decimalNumberWithString:self];
     CFLocaleRef currentLocale = CFLocaleCopyCurrent();
@@ -126,7 +126,7 @@
     return formattedNumberString;
 }
 
-- (BOOL)isAlpha
+- (BOOL)whl_isAlpha
 {
     for (int i = 0; i < [self length]; i++) {
         char c = [self characterAtIndex:i];
@@ -137,7 +137,7 @@
     return [self length] != 0;
 }
 
-- (BOOL)isNumber
+- (BOOL)whl_isNumber
 {
     for (int i = 0; i < [self length]; i++) {
         char c = [self characterAtIndex:i];
@@ -148,7 +148,7 @@
     return [self length] != 0;
 }
 
-- (BOOL)isWhitespace {
+- (BOOL)whl_isWhitespace {
     NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     for (NSInteger i = 0; i < self.length; ++i) {
         unichar c = [self characterAtIndex:i];
@@ -159,7 +159,7 @@
     return YES;
 }
 
-- (BOOL)isContainOfString:(NSString *)aString
+- (BOOL)whl_isContainOfString:(NSString *)aString
 {
     NSRange range = [self rangeOfString:aString];
     if (range.length > 0) {
@@ -168,7 +168,7 @@
     return NO;
 }
 
-+ (BOOL)isEmptyOrWithStrWith:(NSString *)str {
++ (BOOL)whl_isEmptyOrWithStrWith:(NSString *)str {
     if (str == nil || str == NULL) {
         return YES;
     }
@@ -181,7 +181,7 @@
     return NO;
 }
 
-- (NSString *)GetFormateShortTimeStr
+- (NSString *)whl_GetFormateShortTimeStr
 {
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.dateFormat = @"yyyy-MM-dd";
@@ -260,7 +260,7 @@
     return [ddff stringFromDate:date];
 }
 
-- (NSString *)CQGetFormateListShortTimeStr {
+- (NSString *)whl_CQGetFormateListShortTimeStr {
 //    NSDateFormatter *df = [[NSDateFormatter alloc] init];
 //    df.dateFormat = @"yyyy-MM-dd";
 //    NSString *dateString = [df stringFromDate:[NSDate date]];
@@ -299,17 +299,14 @@
         return @"";
     }
 
-    if (date.isToday) {
+    if (date.whl_isToday) {
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         df.dateFormat = @"HH:mm";
         return [df stringFromDate:date];
     }
 
-    if (date.isYesterday) {
+    if (date.whl_isYesterday) {
         return @"昨天";
-    }
-
-    if ([date isThisWeek]) {
     }
 
     NSDateFormatter *ddff = [[NSDateFormatter alloc] init];
@@ -317,7 +314,7 @@
     return [ddff stringFromDate:date];
 }
 
-- (BOOL)isEmptyOrWhitespace {
+- (BOOL)whl_isEmptyOrWhitespace {
     if (self == nil || self == NULL) {
         return YES;
     }
@@ -334,7 +331,7 @@
 #pragma mark 字符串处理
 
 //计算NSString中英文字符串的字符长度。ios 中一个汉字算2字符数
-- (int)charNumberOfStr
+- (int)whl_charNumberOfStr
 {
     int strlength = 0;
     char *p = (char *)[self cStringUsingEncoding:NSUnicodeStringEncoding];
@@ -349,7 +346,7 @@
     return strlength;
 }
 
-- (NSString *)stringByTrimmingTrailingCharactersInSet:(NSCharacterSet *)characterSet {
+- (NSString *)whl_stringByTrimmingTrailingCharactersInSet:(NSCharacterSet *)characterSet {
     NSRange rangeOfLastWantedCharacter = [self rangeOfCharacterFromSet:[characterSet invertedSet]
                                                                options:NSBackwardsSearch];
     if (rangeOfLastWantedCharacter.location == NSNotFound) {
@@ -359,26 +356,26 @@
 }
 
 //去掉所有空格
-- (NSString *)stringByTrimmingOutAllWhithesspace {
+- (NSString *)whl_stringByTrimmingOutAllWhithesspace {
     return [self stringByReplacingOccurrencesOfString:@" " withString:@""];
 }
 
-- (NSString *)stringByTrimmingWhitespaceCharacters
+- (NSString *)whl_stringByTrimmingWhitespaceCharacters
 {
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
-- (NSString *)stringByTrimmingTrailingWhitespaceAndNewlineCharacters {
-    return [self stringByTrimmingTrailingCharactersInSet:
+- (NSString *)whl_stringByTrimmingTrailingWhitespaceAndNewlineCharacters {
+    return [self whl_stringByTrimmingTrailingCharactersInSet:
             [NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
-- (NSString *)stringByRemovingHTMLTags {
+- (NSString *)whl_stringByRemovingHTMLTags {
     TKMarkupStripper *stripper = [[TKMarkupStripper alloc] init];
     return [stripper parse:self];
 }
 
-+ (NSString *)stringByTrimmingWhitespaceCharactersAndAngleBracket:(NSString *)string
++ (NSString *)whl_stringByTrimmingWhitespaceCharactersAndAngleBracket:(NSString *)string
 {
     NSString *returnStr = string;
     returnStr = [returnStr stringByTrimmingCharactersInSet:[NSCharacterSet  whitespaceAndNewlineCharacterSet]];
@@ -388,12 +385,12 @@
     return returnStr;
 }
 
-- (NSString *)trim
+- (NSString *)whl_trim
 {
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
-+ (NSString *)notNull:(NSString *)str
++ (NSString *)whl_notNull:(NSString *)str
 {
     if (str == nil) {
         return @"";
@@ -407,9 +404,9 @@
     return str;
 }
 
-+ (NSString *)valueNotNull:(NSString *)str {
++ (NSString *)whl_valueNotNull:(NSString *)str {
     if ([str isKindOfClass:[NSString class]]) {
-        return [self notNull:str];
+        return [self whl_notNull:str];
     }
     if ([str isKindOfClass:[NSNumber class]]) {
         NSNumber *number = (NSNumber *)str;
@@ -418,7 +415,7 @@
     return @"";
 }
 
-+ (NSString *)getFloatStrWithVaule:(float)value {
++ (NSString *)whl_getFloatStrWithVaule:(float)value {
     float i = roundf(value);//对num取整
 
     if (i == value) {
@@ -428,7 +425,7 @@
     }
 }
 
-+ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString {
++ (NSDictionary *)whl_dictionaryWithJsonString:(NSString *)jsonString {
     if (jsonString == nil) {
         return nil;
     }
@@ -445,7 +442,7 @@
     return dic;
 }
 
-+ (NSArray *)arrWithJsonString:(NSString *)jsonString {
++ (NSArray *)whl_arrWithJsonString:(NSString *)jsonString {
     if (jsonString == nil) {
         return nil;
     }
@@ -461,7 +458,7 @@
 }
 
 //字典转化为JSON字符串
-+ (NSString *)jsonFormDict:(NSDictionary *)dict
++ (NSString *)whl_jsonFormDict:(NSDictionary *)dict
 {
     if (!dict) {//解析失败
         return nil;
@@ -476,13 +473,13 @@
     jsonStr = [jsonStr stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
     jsonStr = [jsonStr stringByReplacingOccurrencesOfString:@"\t" withString:@""];
     jsonStr = [jsonStr stringByReplacingOccurrencesOfString:@" " withString:@""];//去掉字符串中的空格
-    jsonStr = [jsonStr stringByTrimmingWhitespaceCharacters];//去掉字符串两端的空格。
+    jsonStr = [jsonStr whl_stringByTrimmingWhitespaceCharacters];//去掉字符串两端的空格。
     return jsonStr;
 }
 
 #pragma mark - HTML Methods
 
-- (NSString *)escapeHTML {
+- (NSString *)whl_escapeHTML {
     NSMutableString *s = [NSMutableString string];
 
     NSUInteger start = 0;
@@ -524,7 +521,7 @@
     return s;
 }
 
-- (NSString *)unescapeHTML {
+- (NSString *)whl_unescapeHTML {
     NSMutableString *s = [NSMutableString string];
     NSMutableString *target = [self mutableCopy];
     NSCharacterSet *chs = [NSCharacterSet characterSetWithCharactersInString:@"&"];
@@ -573,7 +570,7 @@
 @implementation NSString (version)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (NSComparisonResult)versionStringCompare:(NSString *)other {
+- (NSComparisonResult)whl_versionStringCompare:(NSString *)other {
     NSArray *oneComponents = [self componentsSeparatedByString:@"a"];
     NSArray *twoComponents = [other componentsSeparatedByString:@"a"];
 
@@ -609,7 +606,7 @@
 
 @implementation NSString (NSURL)
 
-- (NSDictionary *)queryDictionaryUsingEncoding:(NSStringEncoding)encoding {
+- (NSDictionary *)whl_queryDictionaryUsingEncoding:(NSStringEncoding)encoding {
     NSCharacterSet *delimiterSet = [NSCharacterSet characterSetWithCharactersInString:@"&;"];
     NSMutableDictionary *pairs = [NSMutableDictionary dictionary];
     NSScanner *scanner = [[NSScanner alloc] initWithString:self];
@@ -630,7 +627,7 @@
     return [NSDictionary dictionaryWithDictionary:pairs];
 }
 
-- (NSString *)stringByAddingQuery:(NSDictionary *)query {
+- (NSString *)whl_stringByAddingQuery:(NSDictionary *)query {
     NSMutableArray *pairs = [NSMutableArray array];
     for (NSString *key in [query keyEnumerator]) {
         id aValue = [query objectForKey:key];
@@ -654,7 +651,7 @@
     }
 }
 
-- (NSString *)urlEncodeValue {
+- (NSString *)whl_urlEncodeValue {
     NSString *encodedString =
         (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
                                           kCFAllocatorDefault, (CFStringRef)self, NULL,
@@ -663,7 +660,7 @@
     return encodedString;
 }
 
-- (NSString *)urlDecodeValue {
+- (NSString *)whl_urlDecodeValue {
     NSString *decodedString = (__bridge_transfer NSString *)
         CFURLCreateStringByReplacingPercentEscapesUsingEncoding(
         NULL, (__bridge CFStringRef)self, CFSTR(""),
@@ -675,7 +672,7 @@
 
 @implementation NSString (Matching)
 
-- (BOOL)isValidPhoneNumber {
+- (BOOL)whl_isValidPhoneNumber {
     if (self.length != 11) {
         return NO;
     } else {
@@ -693,7 +690,7 @@
 //         * 电信号段正则表达式
 //         */
 //        NSString *CT_NUM = @"^((13)|(15)|(17)|(18[0,1,9]))\\d{9}$";
-        if ([self isValidateByRegex:adStr]) {
+        if ([self whl_isValidateByRegex:adStr]) {
             return YES;
         } else {
             return NO;
@@ -701,30 +698,30 @@
     }
 }
 
-- (BOOL)isEmailAddress {
+- (BOOL)whl_isEmailAddress {
     NSString *emailRegex = @"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,4}";
-    return [self isValidateByRegex:emailRegex];
+    return [self whl_isValidateByRegex:emailRegex];
 }
 
 //身份证有效性
-- (BOOL)simpleVerifyIdentityCardNum {
+- (BOOL)whl_simpleVerifyIdentityCardNum {
     NSString *regex2 = @"^(\\\\d{14}|\\\\d{17})(\\\\d|[xX])$";
-    return [self isValidateByRegex:regex2];
+    return [self whl_isValidateByRegex:regex2];
 }
 
 //判断是否有特殊符号
-- (BOOL)effectivePassword {
+- (BOOL)whl_effectivePassword {
     NSString *regex2 = @"[a-zA-Z0-9]{6,20}";
-    return [self isValidateByRegex:regex2];
+    return [self whl_isValidateByRegex:regex2];
 }
 
 //是否纯汉字
-- (BOOL)isValidChinese {
+- (BOOL)whl_isValidChinese {
     NSString *chineseRegex = @"^[\\u4e00-\\u9fa5]+$";
-    return [self isValidateByRegex:chineseRegex];
+    return [self whl_isValidateByRegex:chineseRegex];
 }
 
-- (BOOL)isValidateByRegex:(NSString *)regex {
+- (BOOL)whl_isValidateByRegex:(NSString *)regex {
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [pre evaluateWithObject:self];
 }
@@ -733,7 +730,7 @@
 
 @implementation NSString (UUID)
 
-+ (NSString *)stringWithNewUUID
++ (NSString *)whl_stringWithNewUUID
 {
     // Create a new UUID
     CFUUIDRef uuidObj = CFUUIDCreate(nil);
@@ -748,12 +745,12 @@
 
 @implementation   NSString (HTML)
 
-+ (NSAttributedString *)transformationStr:(NSString *)htmlStr WithOption:(NSDictionary *)optionDict {
-    NSString *manageStr = [self htmlEntityDecode:htmlStr];
-    return [self attributedStringWithHTMLString:manageStr WithOption:optionDict];
++ (NSAttributedString *)whl_transformationStr:(NSString *)htmlStr WithOption:(NSDictionary *)optionDict {
+    NSString *manageStr = [self whl_htmlEntityDecode:htmlStr];
+    return [self whl_attributedStringWithHTMLString:manageStr WithOption:optionDict];
 }
 
-+ (NSString *)htmlEntityDecode:(NSString *)string
++ (NSString *)whl_htmlEntityDecode:(NSString *)string
 {
     string = [string stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
     string = [string stringByReplacingOccurrencesOfString:@"&apos;" withString:@"'"];
@@ -764,7 +761,7 @@
     return string;
 }
 
-+ (NSAttributedString *)attributedStringWithHTMLString:(NSString *)htmlString WithOption:(NSDictionary *)option {
++ (NSAttributedString *)whl_attributedStringWithHTMLString:(NSString *)htmlString WithOption:(NSDictionary *)option {
 //    if (!option) {
 //            NSDictionary* options = @{
 //                                      NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType,
@@ -782,8 +779,8 @@
     return nil;
 }
 
-+ (NSString *)filterHTML:(NSString *)htmlStr {
-    NSString *htmlStrOne = [self htmlEntityDecode:htmlStr];
++ (NSString *)whl_filterHTML:(NSString *)htmlStr {
+    NSString *htmlStrOne = [self whl_htmlEntityDecode:htmlStr];
     NSScanner *scanner = [NSScanner scannerWithString:htmlStrOne];
     NSString *text = nil;
 
@@ -800,7 +797,7 @@
 
 @implementation NSString (Hash)
 
-- (NSString *)md5 {
+- (NSString *)whl_md5 {
     if (self == nil || [self length] == 0) {
         return nil;
     }
@@ -814,72 +811,72 @@
     return [ms copy];
 }
 
-- (NSString *)md5String
+- (NSString *)whl_md5String
 {
     const char *string = self.UTF8String;
     int length = (int)strlen(string);
     unsigned char bytes[CC_MD5_DIGEST_LENGTH];
     CC_MD5(string, length, bytes);
-    return [self stringFromBytes:bytes length:CC_MD5_DIGEST_LENGTH];
+    return [self whl_stringFromBytes:bytes length:CC_MD5_DIGEST_LENGTH];
 }
 
-- (NSString *)sha1String
+- (NSString *)whl_sha1String
 {
     const char *string = self.UTF8String;
     int length = (int)strlen(string);
     unsigned char bytes[CC_SHA1_DIGEST_LENGTH];
     CC_SHA1(string, length, bytes);
-    return [self stringFromBytes:bytes length:CC_SHA1_DIGEST_LENGTH];
+    return [self whl_stringFromBytes:bytes length:CC_SHA1_DIGEST_LENGTH];
 }
 
-- (NSString *)sha256String
+- (NSString *)whl_sha256String
 {
     const char *string = self.UTF8String;
     int length = (int)strlen(string);
     unsigned char bytes[CC_SHA256_DIGEST_LENGTH];
     CC_SHA256(string, length, bytes);
-    return [self stringFromBytes:bytes length:CC_SHA256_DIGEST_LENGTH];
+    return [self whl_stringFromBytes:bytes length:CC_SHA256_DIGEST_LENGTH];
 }
 
-- (NSString *)sha512String
+- (NSString *)whl_sha512String
 {
     const char *string = self.UTF8String;
     int length = (int)strlen(string);
     unsigned char bytes[CC_SHA512_DIGEST_LENGTH];
     CC_SHA512(string, length, bytes);
-    return [self stringFromBytes:bytes length:CC_SHA512_DIGEST_LENGTH];
+    return [self whl_stringFromBytes:bytes length:CC_SHA512_DIGEST_LENGTH];
 }
 
-- (NSString *)hmacSHA1StringWithKey:(NSString *)key
+- (NSString *)whl_hmacSHA1StringWithKey:(NSString *)key
 {
     NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
     NSData *messageData = [self dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableData *mutableData = [NSMutableData dataWithLength:CC_SHA1_DIGEST_LENGTH];
     CCHmac(kCCHmacAlgSHA1, keyData.bytes, keyData.length, messageData.bytes, messageData.length, mutableData.mutableBytes);
-    return [self stringFromBytes:(unsigned char *)mutableData.bytes length:mutableData.length];
+    return [self whl_stringFromBytes:(unsigned char *)mutableData.bytes length:mutableData.length];
 }
 
-- (NSString *)hmacSHA256StringWithKey:(NSString *)key
+- (NSString *)whl_hmacSHA256StringWithKey:(NSString *)key
 {
     NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
     NSData *messageData = [self dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableData *mutableData = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
     CCHmac(kCCHmacAlgSHA256, keyData.bytes, keyData.length, messageData.bytes, messageData.length, mutableData.mutableBytes);
-    return [self stringFromBytes:(unsigned char *)mutableData.bytes length:mutableData.length];
+    return [self whl_stringFromBytes:(unsigned char *)mutableData.bytes length:mutableData.length];
 }
 
-- (NSString *)hmacSHA512StringWithKey:(NSString *)key
+- (NSString *)whl_hmacSHA512StringWithKey:(NSString *)key
 {
     NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
     NSData *messageData = [self dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableData *mutableData = [NSMutableData dataWithLength:CC_SHA512_DIGEST_LENGTH];
     CCHmac(kCCHmacAlgSHA512, keyData.bytes, keyData.length, messageData.bytes, messageData.length, mutableData.mutableBytes);
-    return [self stringFromBytes:(unsigned char *)mutableData.bytes length:mutableData.length];
+    return [self whl_stringFromBytes:(unsigned char *)mutableData.bytes length:mutableData.length];
 }
 
 #pragma mark - Helpers
 
-- (NSString *)stringFromBytes:(unsigned char *)bytes length:(NSInteger)length
+- (NSString *)whl_stringFromBytes:(unsigned char *)bytes length:(NSInteger)length
 {
     NSMutableString *mutableString = @"".mutableCopy;
     for (int i = 0; i < length; i++) {
@@ -894,7 +891,7 @@
 /**
   精确到小数点后6位
  */
-- (double)numberWithDrecision
+- (double)whl_numberWithDrecision
 {
     double oldDoudle = [self doubleValue];
     NSNumberFormatter *nf = [[NSNumberFormatter alloc]init];
@@ -907,19 +904,19 @@
 
 @implementation NSString (WHLCanonical)
 
-- (BOOL)isChinese {
+- (BOOL)whl_isChinese {
     NSString *match = @"(^[\u4e00-\u9fa5]+$)";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF matches %@", match];
     return [predicate evaluateWithObject:self];
 }
 
-- (BOOL)isEmail {
+- (BOOL)whl_isEmail {
     NSString *regex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [pred evaluateWithObject:self];
 }
 
-- (BOOL)isUrl {
+- (BOOL)whl_isUrl {
 //    NSString *pattern = @"http(s)?:\\/\\/([\\w-]+\\.)+[\\w-]+(\\/[\\w- .\\/?%&=]*)?";
     //这里是这个项目所特别用到的
 
@@ -928,73 +925,73 @@
     return [pred evaluateWithObject:self];
 }
 
-- (BOOL)validateAuthen {
+- (BOOL)whl_validateAuthen {
     NSString *pattern = @"^\\d{5,6}$";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern];
     return [pred evaluateWithObject:self];
 }
 
-- (BOOL)isPhoneNumber {
+- (BOOL)whl_isPhoneNumber {
     NSString *regex = @"^1[3|4|5|7|8][0-9]\\d{8}$";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [pred evaluateWithObject:self];
 }
 
-- (BOOL)isProvinceCard {
+- (BOOL)whl_isProvinceCard {
     NSString *regex = @"\\d{14}[[0-9],0-9xX]";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [pred evaluateWithObject:self];
 }
 
-- (BOOL)isPositiveInteger {
+- (BOOL)whl_isPositiveInteger {
     NSString *regex = @"^([0-9][0-9]*)$";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [pred evaluateWithObject:self];
 }
 
-- (BOOL)isTwoDicmal {
+- (BOOL)whl_isTwoDicmal {
     NSString *regex = @"^[0-9]+(.[0-9]{2})?$";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [pred evaluateWithObject:self];
 }
 
-- (BOOL)isPostalcode {
+- (BOOL)whl_isPostalcode {
     NSString *regex = @"[1-9]\\d{5}(?!\d)";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [pred evaluateWithObject:self];
 }
 
-- (BOOL)isQQNmuber {
+- (BOOL)whl_isQQNmuber {
     NSString *regex = @"[1-9][0-9]\{4,\}";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [pred evaluateWithObject:self];
 }
 
-- (BOOL)isTwoBetyLenght {//评注：可以用来计算字符串的长度
+- (BOOL)whl_isTwoBetyLenght {//评注：可以用来计算字符串的长度
     NSString *regex = @"[^\x00-\xff]";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [pred evaluateWithObject:self];
 }
 
-- (BOOL)isBeginToEndblank {//评注：可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式
+- (BOOL)whl_isBeginToEndblank {//评注：可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式
     NSString *regex = @"^\s*|\s*$";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [pred evaluateWithObject:self];
 }
 
-- (BOOL)isOnlyNmuber {
+- (BOOL)whl_isOnlyNmuber {
     NSString *regex = @"^[0-9]*$";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [pred evaluateWithObject:self];
 }
 
-- (BOOL)isBlankLine {//评注：可以用来删除空白行
+- (BOOL)whl_isBlankLine {//评注：可以用来删除空白行
     NSString *regex = @"\n\s*\r";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [pred evaluateWithObject:self];
 }
 
-- (BOOL)isContainsEmojiStr;
+- (BOOL)whl_isContainsEmojiStr;
 {
     __block BOOL returnValue = NO;
 
@@ -1034,7 +1031,7 @@
 }
 
 //判断第三方键盘中的表情
-- (BOOL)hasTripartiteEmoji {
+- (BOOL)whl_hasTripartiteEmoji {
     NSString *pattern = @"[^\\u0020-\\u007E\\u00A0-\\u00BE\\u2E80-\\uA4CF\\uF900-\\uFAFF\\uFE30-\\uFE4F\\uFF00-\\uFFEF\\u0080-\\u009F\\u2000-\\u201f\r\n]";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern];
     BOOL isMatch = [pred evaluateWithObject:self];
@@ -1042,13 +1039,13 @@
 }
 
 //去除表情
-- (NSString *)disableEmoji {
+- (NSString *)whl_disableEmoji {
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[^\\u0020-\\u007E\\u00A0-\\u00BE\\u2E80-\\uA4CF\\uF900-\\uFAFF\\uFE30-\\uFE4F\\uFF00-\\uFFEF\\u0080-\\u009F\\u2000-\\u201f\r\n]"options:NSRegularExpressionCaseInsensitive error:nil];
     NSString *modifiedString = [regex stringByReplacingMatchesInString:self options:0 range:NSMakeRange(0, [self length]) withTemplate:@""];
     return modifiedString;
 }
 
-- (BOOL)isContaintSystemEmojiStr {
+- (BOOL)whl_isContaintSystemEmojiStr {
     NSUInteger len = [self lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
     if (len < 3) { // 大于2个字符需要验证Emoji(有些Emoji仅三个字符)
         return NO;
@@ -1080,7 +1077,7 @@
 
             // NSLog(@"%02X%02X", (Byte)(v >> 8), (Byte)(v & 0xFF));
 
-            if ([NSString emojiInSoftBankUnicode:v] || [NSString emojiInUnicode:v]) {
+            if ([NSString whl_emojiInSoftBankUnicode:v] || [NSString whl_emojiInUnicode:v]) {
                 return YES;
             }
 
@@ -1096,12 +1093,12 @@
     return NO;
 }
 
-+ (BOOL)emojiInSoftBankUnicode:(short)code
++ (BOOL)whl_emojiInSoftBankUnicode:(short)code
 {
     return ((code >> 8) >= 0xE0 && (code >> 8) <= 0xE5 && (Byte)(code & 0xFF) < 0x60);
 }
 
-+ (BOOL)emojiInUnicode:(short)code
++ (BOOL)whl_emojiInUnicode:(short)code
 {
     if (code == 0x0023
         || code == 0x002A

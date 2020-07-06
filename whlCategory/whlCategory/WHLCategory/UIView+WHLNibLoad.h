@@ -11,6 +11,6 @@
 
 + (instancetype)whl_viewFromNibWithFrame:(CGRect)frame;
 
-+ (instancetype)whl_CreatFromNibWithClassName:(NSString *)classStr WithFrame:(CGRect)frame;
++ (instancetype)whl_creatFromNibWithClassName:(NSString *)classStr WithFrame:(CGRect)frame;
 
 @end

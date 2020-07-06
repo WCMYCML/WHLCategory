@@ -18,7 +18,6 @@
 
 - (id)whl_GetObjectWithKey:(NSString *)key defaultValue:(id)def;
 
-
 /**
  *  通过key获取字符串
  *

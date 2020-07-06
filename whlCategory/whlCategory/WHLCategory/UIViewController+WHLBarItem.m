@@ -133,7 +133,7 @@ CGFloat const TEXT_FONT = 18;
     }
     if (image) {
         [button setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
-//        button.imageView.contentMode = UIViewContentModeScaleAspectFit;
+//      button.imageView.contentMode = UIViewContentModeScaleAspectFit;
     }
 
     [button addTarget:target action:sel forControlEvents:UIControlEventTouchUpInside];

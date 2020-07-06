@@ -18,8 +18,9 @@
 @property (nonatomic) CGFloat whl_height;
 @property (nonatomic) CGFloat whl_centerX;
 @property (nonatomic) CGFloat whl_centerY;
-@property (nonatomic) CGSize whl_size;
 @property (nonatomic) CGPoint whl_origin;
+
+@property (nonatomic) CGSize whl_size;
 @property (nonatomic, readonly) CGFloat whl_bottom;
 
 @end
