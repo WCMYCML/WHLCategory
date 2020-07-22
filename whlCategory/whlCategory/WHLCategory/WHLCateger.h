@@ -33,3 +33,4 @@
 #import "UIBarButtonItem+WHLCreate.h"
 #import "UIScrollView+WHLMJRefresh.h"
 #import "UITableView+WHLFootNoDateView.h"
+#import "UIView+WHLRoundedCorner.h"

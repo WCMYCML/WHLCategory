@@ -34,6 +34,9 @@
 		231E8975249C9B6800397CB2 /* UITableView+WHLRegisterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E8962249C9B6800397CB2 /* UITableView+WHLRegisterCell.m */; };
 		231E897B249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E8979249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.m */; };
 		231E897E249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E897D249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m */; };
+		235F672824C812C800980570 /* UIView+WHLRoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 235F672724C812C800980570 /* UIView+WHLRoundedCorner.m */; };
+		235F672B24C8137B00980570 /* UIView+WHLshadowLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 235F672924C8137A00980570 /* UIView+WHLshadowLayer.m */; };
+		236E997024B70954003F552F /* NSObject+WHLRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 236E996E24B70954003F552F /* NSObject+WHLRuntime.m */; };
 		3A7EE20BBC8C6ACFB5EA4BC9 /* Pods_whlCategory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B810854740E8DE516100554E /* Pods_whlCategory.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +96,12 @@
 		231E897A249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+WHLFootNoDateView.h"; sourceTree = "<group>"; };
 		231E897C249CC23000397CB2 /* UIScrollView+WHLMJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+WHLMJRefresh.h"; sourceTree = "<group>"; };
 		231E897D249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+WHLMJRefresh.m"; sourceTree = "<group>"; };
+		235F672624C812C800980570 /* UIView+WHLRoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WHLRoundedCorner.h"; sourceTree = "<group>"; };
+		235F672724C812C800980570 /* UIView+WHLRoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WHLRoundedCorner.m"; sourceTree = "<group>"; };
+		235F672924C8137A00980570 /* UIView+WHLshadowLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WHLshadowLayer.m"; sourceTree = "<group>"; };
+		235F672A24C8137A00980570 /* UIView+WHLshadowLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WHLshadowLayer.h"; sourceTree = "<group>"; };
+		236E996E24B70954003F552F /* NSObject+WHLRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WHLRuntime.m"; sourceTree = "<group>"; };
+		236E996F24B70954003F552F /* NSObject+WHLRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+WHLRuntime.h"; sourceTree = "<group>"; };
 		B810854740E8DE516100554E /* Pods_whlCategory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_whlCategory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -157,6 +166,10 @@
 		231E893E249C9B6800397CB2 /* WHLCategory */ = {
 			isa = PBXGroup;
 			children = (
+				235F672624C812C800980570 /* UIView+WHLRoundedCorner.h */,
+				235F672724C812C800980570 /* UIView+WHLRoundedCorner.m */,
+				236E996F24B70954003F552F /* NSObject+WHLRuntime.h */,
+				236E996E24B70954003F552F /* NSObject+WHLRuntime.m */,
 				231E8949249C9B6800397CB2 /* NSDate+WHLCategory.h */,
 				231E8956249C9B6800397CB2 /* NSDate+WHLCategory.m */,
 				231E895D249C9B6800397CB2 /* NSDictionary+WHLCategory.h */,
@@ -195,6 +208,8 @@
 				231E893F249C9B6800397CB2 /* UIView+WHLFrame.m */,
 				231E8960249C9B6800397CB2 /* UIView+WHLNibLoad.h */,
 				231E894E249C9B6800397CB2 /* UIView+WHLNibLoad.m */,
+				235F672A24C8137A00980570 /* UIView+WHLshadowLayer.h */,
+				235F672924C8137A00980570 /* UIView+WHLshadowLayer.m */,
 				231E894B249C9B6800397CB2 /* UIViewController+WHLBarItem.h */,
 				231E895C249C9B6800397CB2 /* UIViewController+WHLBarItem.m */,
 				231E8963249C9B6800397CB2 /* WHLCateger.h */,
@@ -328,7 +343,9 @@
 				231E8972249C9B6800397CB2 /* UIBarButtonItem+WHLCreate.m in Sources */,
 				231E896A249C9B6800397CB2 /* UIView+WHLNibLoad.m in Sources */,
 				231E8969249C9B6800397CB2 /* UINavigationBar+WHLHandle.m in Sources */,
+				236E997024B70954003F552F /* NSObject+WHLRuntime.m in Sources */,
 				231E8927249C9B0700397CB2 /* AppDelegate.m in Sources */,
+				235F672B24C8137B00980570 /* UIView+WHLshadowLayer.m in Sources */,
 				231E8968249C9B6800397CB2 /* NSDictionary+WHLCategory.m in Sources */,
 				231E8975249C9B6800397CB2 /* UITableView+WHLRegisterCell.m in Sources */,
 				231E8973249C9B6800397CB2 /* UITabBar+WHLTabBadgeView.m in Sources */,
@@ -344,6 +361,7 @@
 				231E896B249C9B6800397CB2 /* UITextView+WHLPlaceholder.m in Sources */,
 				231E897E249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m in Sources */,
 				231E8966249C9B6800397CB2 /* NSString+WHLAES128.m in Sources */,
+				235F672824C812C800980570 /* UIView+WHLRoundedCorner.m in Sources */,
 				231E8964249C9B6800397CB2 /* UIView+WHLFrame.m in Sources */,
 				231E896E249C9B6800397CB2 /* NSDate+WHLCategory.m in Sources */,
 				231E896D249C9B6800397CB2 /* UIView+WHLCornerRadius.m in Sources */,
