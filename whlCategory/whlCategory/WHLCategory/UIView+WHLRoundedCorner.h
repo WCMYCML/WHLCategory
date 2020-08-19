@@ -2,7 +2,7 @@
 //  UIView+WHL_RoundedCorner.h
 //  CrudeOilThrough
 //
-//  Created by 王浩霖 on 2020/7/18.
+//  Created by Haolin Wang on 2020/7/18.
 //  Copyright © 2020 wanglz. All rights reserved.
 //
 

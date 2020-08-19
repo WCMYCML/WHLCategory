@@ -25,6 +25,4 @@
 - (UITableViewCell *)whl_dequeueReusableCellWithIdentifier:(NSString *)cell forIndexPath:(NSIndexPath *)indexPath;
 
 
-
-
 @end

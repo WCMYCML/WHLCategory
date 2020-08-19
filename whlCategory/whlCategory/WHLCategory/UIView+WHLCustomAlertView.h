@@ -28,7 +28,6 @@ typedef NS_ENUM(NSInteger, WHLCustomAnimationMode) {
  */
 -(void)whl_showInWindowWithMode:(WHLCustomAnimationMode)animationMode inView:(UIView *)superV bgAlpha:(CGFloat)alpha needEffectView:(BOOL)isNeed;
 
-
 /**
  隐藏 view
  */

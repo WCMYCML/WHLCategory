@@ -29,8 +29,9 @@
 #import "UICollectionView+WHLRegisterCell.h"
 #import "UIViewController+WHLBarItem.h"
 #import "UIView+WHLNibLoad.h"
-#import "UITextField+WHLPlaceholder.h"
-#import "UIBarButtonItem+WHLCreate.h"
 #import "UIScrollView+WHLMJRefresh.h"
 #import "UITableView+WHLFootNoDateView.h"
 #import "UIView+WHLRoundedCorner.h"
+#import "UIView+WHLshadowLayer.h"
+#import "WHLFullscreenPopGesture.h"
+

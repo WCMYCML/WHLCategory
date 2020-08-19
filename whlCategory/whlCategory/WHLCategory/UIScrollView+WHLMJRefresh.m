@@ -16,14 +16,14 @@
     // 设置普通状态的动画图片
     NSMutableArray *idleImages = [NSMutableArray array];
 
-    for (int i = 0; i <= 68; i++) {
+    for (int i = 1; i <= 68; i++) {
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"pulldown%d", i]];
         [idleImages addObject:image];
     }
 
 //     设置即将刷新状态的动画图片（一松开就会刷新的状态）
     NSMutableArray *refreshingImages = [NSMutableArray array];
-    for (int i = 0; i <= 68; i++) {
+    for (int i = 1; i <= 68; i++) {
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"pulldown%d", i]];
         [refreshingImages addObject:image];
     }

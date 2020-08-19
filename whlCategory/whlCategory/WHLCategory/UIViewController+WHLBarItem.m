@@ -20,13 +20,14 @@ CGFloat const TEXT_FONT = 18;
     UIButton *leftItem =  [self buttonWithImage:imageName title:nil target:target selector:sel tag:tag];
     [leftItem sizeToFit];
 
-    if (@available(iOS 11.0, *)) {
-        leftItem.frame = CGRectMake(0, 0, leftItem.frame.size.width + 14 + 20, 40);
-        leftItem.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
-    } else {
-        leftItem.frame = CGRectMake(0, 0, leftItem.frame.size.width + 30, 40);
-        leftItem.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-    }
+    if (leftItem.bounds.size.width < 40) {
+            CGFloat width = 40 / leftItem.bounds.size.height * leftItem.bounds.size.width;
+            leftItem.bounds = CGRectMake(0, 0, width, 40);
+        }
+        if (leftItem.bounds.size.height > 40) {
+            CGFloat height = 40 / leftItem.bounds.size.width * leftItem.bounds.size.height;
+            leftItem.bounds = CGRectMake(0, 0, 40, height);
+     }
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftItem];
 
@@ -37,6 +38,7 @@ CGFloat const TEXT_FONT = 18;
  *  导航栏添加左边带有消息未读数目按钮
  */
 - (UILabel *)whl_createLeftItemWithUnReadCount:(NSString *)imageName target:(id)target selector:(SEL)sel tag:(NSInteger)tag {
+    
     UIButton *leftItem = [self buttonWithImage:imageName title:nil target:target selector:sel tag:tag];
     leftItem.frame = CGRectMake(0, 2, 40, 40);
     leftItem.imageEdgeInsets = UIEdgeInsetsMake(0, -(40 - CGRectGetWidth(leftItem.imageView.frame)) / 2, 0, (40 - CGRectGetWidth(leftItem.imageView.frame)) / 2);
