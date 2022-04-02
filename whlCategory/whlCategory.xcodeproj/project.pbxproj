@@ -36,6 +36,7 @@
 		231E897E249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E897D249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m */; };
 		235F672824C812C800980570 /* UIView+WHLRoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 235F672724C812C800980570 /* UIView+WHLRoundedCorner.m */; };
 		235F672B24C8137B00980570 /* UIView+WHLshadowLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 235F672924C8137A00980570 /* UIView+WHLshadowLayer.m */; };
+		23618F77255BE1450082B85C /* WHL_WeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 23618F75255BE1450082B85C /* WHL_WeakProxy.m */; };
 		2362AF4224ECC48C0062C9FE /* WHLFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 2362AF4124ECC48C0062C9FE /* WHLFullscreenPopGesture.m */; };
 		236E997024B70954003F552F /* NSObject+WHLRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 236E996E24B70954003F552F /* NSObject+WHLRuntime.m */; };
 		3A7EE20BBC8C6ACFB5EA4BC9 /* Pods_whlCategory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B810854740E8DE516100554E /* Pods_whlCategory.framework */; };
@@ -101,6 +102,8 @@
 		235F672724C812C800980570 /* UIView+WHLRoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WHLRoundedCorner.m"; sourceTree = "<group>"; };
 		235F672924C8137A00980570 /* UIView+WHLshadowLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WHLshadowLayer.m"; sourceTree = "<group>"; };
 		235F672A24C8137A00980570 /* UIView+WHLshadowLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WHLshadowLayer.h"; sourceTree = "<group>"; };
+		23618F75255BE1450082B85C /* WHL_WeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHL_WeakProxy.m; sourceTree = "<group>"; };
+		23618F76255BE1450082B85C /* WHL_WeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHL_WeakProxy.h; sourceTree = "<group>"; };
 		2362AF4024ECC48B0062C9FE /* WHLFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHLFullscreenPopGesture.h; sourceTree = "<group>"; };
 		2362AF4124ECC48C0062C9FE /* WHLFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHLFullscreenPopGesture.m; sourceTree = "<group>"; };
 		236E996E24B70954003F552F /* NSObject+WHLRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WHLRuntime.m"; sourceTree = "<group>"; };
@@ -169,6 +172,8 @@
 		231E893E249C9B6800397CB2 /* WHLCategory */ = {
 			isa = PBXGroup;
 			children = (
+				23618F76255BE1450082B85C /* WHL_WeakProxy.h */,
+				23618F75255BE1450082B85C /* WHL_WeakProxy.m */,
 				2362AF4024ECC48B0062C9FE /* WHLFullscreenPopGesture.h */,
 				2362AF4124ECC48C0062C9FE /* WHLFullscreenPopGesture.m */,
 				235F672624C812C800980570 /* UIView+WHLRoundedCorner.h */,
@@ -354,6 +359,7 @@
 				235F672B24C8137B00980570 /* UIView+WHLshadowLayer.m in Sources */,
 				231E8968249C9B6800397CB2 /* NSDictionary+WHLCategory.m in Sources */,
 				231E8975249C9B6800397CB2 /* UITableView+WHLRegisterCell.m in Sources */,
+				23618F77255BE1450082B85C /* WHL_WeakProxy.m in Sources */,
 				231E8973249C9B6800397CB2 /* UITabBar+WHLTabBadgeView.m in Sources */,
 				231E8938249C9B0800397CB2 /* main.m in Sources */,
 				231E896C249C9B6800397CB2 /* NSString+WHLAppPath.m in Sources */,

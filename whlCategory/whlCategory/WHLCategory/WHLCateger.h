@@ -34,4 +34,5 @@
 #import "UIView+WHLRoundedCorner.h"
 #import "UIView+WHLshadowLayer.h"
 #import "WHLFullscreenPopGesture.h"
+#import "WHL_WeakProxy.h"
 

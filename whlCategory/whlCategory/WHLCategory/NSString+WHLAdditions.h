@@ -20,6 +20,13 @@
 //是否包含某个字符串
 - (BOOL)whl_isContainOfString:(NSString *)aString;
 
+
+/// 是否包含字符串
+/// @param aString 比较的字符串
+/// @param mask 选项
+- (BOOL)whl_isContainOfString:(NSString *)aString options:(NSStringCompareOptions)mask;
+
+
 //是否为空字符串
 - (BOOL)whl_isEmptyOrWhitespace;
 

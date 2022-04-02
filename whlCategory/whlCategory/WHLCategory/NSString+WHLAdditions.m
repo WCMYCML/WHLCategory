@@ -168,6 +168,16 @@
     return NO;
 }
 
+
+- (BOOL)whl_isContainOfString:(NSString *)aString options:(NSStringCompareOptions)mask{
+    
+    NSRange  range = [self rangeOfString:aString options:mask];
+       if (range.length > 0) {
+           return YES;
+       }
+       return NO;
+}
+
 + (BOOL)whl_isEmptyOrWithStrWith:(NSString *)str {
     if (str == nil || str == NULL) {
         return YES;
