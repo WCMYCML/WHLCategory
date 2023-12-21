@@ -35,4 +35,7 @@
 #import "UIView+WHLshadowLayer.h"
 #import "WHLFullscreenPopGesture.h"
 #import "WHL_WeakProxy.h"
+#import "NSData+Category.h"
+#import "NSObject+WHLDictPhysical.h"
+
 

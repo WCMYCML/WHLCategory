@@ -15,9 +15,7 @@
     return [NSJSONSerialization JSONObjectWithData:self options:NSJSONReadingMutableLeaves error:nil];
 }
 
-
-+ (float)getDecimalNumberScale:(NSInteger)scale RoundingMode:(NSRoundingMode)model OriginalValue:(float)originalValue{
-    
++ (float)getDecimalNumberScale:(NSInteger)scale RoundingMode:(NSRoundingMode)model OriginalValue:(float)originalValue {
     /*
      // Original
      //    value 1.2  1.21  1.25  1.35  1.27 原始值
@@ -28,23 +26,19 @@
      它要看精确度的前一位是偶数还是奇数,如果是奇数,则入,偶数则舍）
      raiseOnExactness/raiseOnOverflow/raiseOnUnderflow raiseOnDivideByZero
      分别表示数据精确/上溢/下益/除以0时是否以异常处理,一般情况下都设置为NO
-     
+
      */
-    
-    NSString *temp = [NSString stringWithFormat:@"%.7f",originalValue];
+
+    NSString *temp = [NSString stringWithFormat:@"%.7f", originalValue];
     NSDecimalNumber *numResult = [NSDecimalNumber decimalNumberWithString:temp];
     NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler
-    decimalNumberHandlerWithRoundingMode:model
-    scale:scale
-    raiseOnExactness:NO
-    raiseOnOverflow:NO
-    raiseOnUnderflow:NO
-    raiseOnDivideByZero:YES];
+                                       decimalNumberHandlerWithRoundingMode:model
+                                                                      scale:scale
+                                                           raiseOnExactness:NO
+                                                            raiseOnOverflow:NO
+                                                           raiseOnUnderflow:NO
+                                                        raiseOnDivideByZero:YES];
     return [[numResult decimalNumberByRoundingAccordingToBehavior:roundUp] floatValue];
-    
 }
-
-
-
 
 @end

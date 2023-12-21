@@ -34,6 +34,8 @@
 		231E8975249C9B6800397CB2 /* UITableView+WHLRegisterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E8962249C9B6800397CB2 /* UITableView+WHLRegisterCell.m */; };
 		231E897B249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E8979249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.m */; };
 		231E897E249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E897D249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m */; };
+		2340C8BA2B343B1600E9ED3C /* NSData+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 2340C8B82B343B1600E9ED3C /* NSData+Category.m */; };
+		2340C8BD2B34443400E9ED3C /* NSObject+WHLDictPhysical.m in Sources */ = {isa = PBXBuildFile; fileRef = 2340C8BB2B34443300E9ED3C /* NSObject+WHLDictPhysical.m */; };
 		235F672824C812C800980570 /* UIView+WHLRoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 235F672724C812C800980570 /* UIView+WHLRoundedCorner.m */; };
 		235F672B24C8137B00980570 /* UIView+WHLshadowLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 235F672924C8137A00980570 /* UIView+WHLshadowLayer.m */; };
 		23618F77255BE1450082B85C /* WHL_WeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 23618F75255BE1450082B85C /* WHL_WeakProxy.m */; };
@@ -101,6 +103,10 @@
 		231E897A249CBFAE00397CB2 /* UITableView+WHLFootNoDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+WHLFootNoDateView.h"; sourceTree = "<group>"; };
 		231E897C249CC23000397CB2 /* UIScrollView+WHLMJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+WHLMJRefresh.h"; sourceTree = "<group>"; };
 		231E897D249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+WHLMJRefresh.m"; sourceTree = "<group>"; };
+		2340C8B82B343B1600E9ED3C /* NSData+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Category.m"; sourceTree = "<group>"; };
+		2340C8B92B343B1600E9ED3C /* NSData+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Category.h"; sourceTree = "<group>"; };
+		2340C8BB2B34443300E9ED3C /* NSObject+WHLDictPhysical.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WHLDictPhysical.m"; sourceTree = "<group>"; };
+		2340C8BC2B34443400E9ED3C /* NSObject+WHLDictPhysical.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+WHLDictPhysical.h"; sourceTree = "<group>"; };
 		235F672624C812C800980570 /* UIView+WHLRoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WHLRoundedCorner.h"; sourceTree = "<group>"; };
 		235F672724C812C800980570 /* UIView+WHLRoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WHLRoundedCorner.m"; sourceTree = "<group>"; };
 		235F672924C8137A00980570 /* UIView+WHLshadowLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WHLshadowLayer.m"; sourceTree = "<group>"; };
@@ -181,24 +187,18 @@
 		231E893E249C9B6800397CB2 /* WHLCategory */ = {
 			isa = PBXGroup;
 			children = (
-				23618F76255BE1450082B85C /* WHL_WeakProxy.h */,
-				23618F75255BE1450082B85C /* WHL_WeakProxy.m */,
-				2362AF4024ECC48B0062C9FE /* WHLFullscreenPopGesture.h */,
-				2362AF4124ECC48C0062C9FE /* WHLFullscreenPopGesture.m */,
-				235F672624C812C800980570 /* UIView+WHLRoundedCorner.h */,
-				235F672724C812C800980570 /* UIView+WHLRoundedCorner.m */,
-				236E996F24B70954003F552F /* NSObject+WHLRuntime.h */,
-				236E996E24B70954003F552F /* NSObject+WHLRuntime.m */,
+				2340C8B92B343B1600E9ED3C /* NSData+Category.h */,
+				2340C8B82B343B1600E9ED3C /* NSData+Category.m */,
+				23877C182A08F1BB00C79E5F /* NSData+WHLCategory.h */,
+				23877C172A08F1BB00C79E5F /* NSData+WHLCategory.m */,
 				231E8949249C9B6800397CB2 /* NSDate+WHLCategory.h */,
 				231E8956249C9B6800397CB2 /* NSDate+WHLCategory.m */,
 				231E895D249C9B6800397CB2 /* NSDictionary+WHLCategory.h */,
 				231E894A249C9B6800397CB2 /* NSDictionary+WHLCategory.m */,
+				236E996F24B70954003F552F /* NSObject+WHLRuntime.h */,
+				236E996E24B70954003F552F /* NSObject+WHLRuntime.m */,
 				231E8953249C9B6800397CB2 /* NSString+WHLAdditions.h */,
 				231E8941249C9B6800397CB2 /* NSString+WHLAdditions.m */,
-				23877C1A2A08F20200C79E5F /* UIImage+WHLCompress.h */,
-				23877C1B2A08F20200C79E5F /* UIImage+WHLCompress.m */,
-				23877C1D2A08F29300C79E5F /* UIImage+WHLProperty.h */,
-				23877C1E2A08F29300C79E5F /* UIImage+WHLProperty.m */,
 				231E8952249C9B6800397CB2 /* NSString+WHLAES128.h */,
 				231E8942249C9B6800397CB2 /* NSString+WHLAES128.m */,
 				231E895E249C9B6800397CB2 /* NSString+WHLAppPath.h */,
@@ -209,8 +209,10 @@
 				231E8959249C9B6800397CB2 /* UICollectionView+WHLRegisterCell.m */,
 				231E8948249C9B6800397CB2 /* UIColor+WHLTransform.h */,
 				231E8958249C9B6800397CB2 /* UIColor+WHLTransform.m */,
-				23877C182A08F1BB00C79E5F /* NSData+WHLCategory.h */,
-				23877C172A08F1BB00C79E5F /* NSData+WHLCategory.m */,
+				23877C1A2A08F20200C79E5F /* UIImage+WHLCompress.h */,
+				23877C1B2A08F20200C79E5F /* UIImage+WHLCompress.m */,
+				23877C1D2A08F29300C79E5F /* UIImage+WHLProperty.h */,
+				23877C1E2A08F29300C79E5F /* UIImage+WHLProperty.m */,
 				231E8961249C9B6800397CB2 /* UINavigationBar+WHLHandle.h */,
 				231E894D249C9B6800397CB2 /* UINavigationBar+WHLHandle.m */,
 				231E897C249CC23000397CB2 /* UIScrollView+WHLMJRefresh.h */,
@@ -233,11 +235,19 @@
 				231E893F249C9B6800397CB2 /* UIView+WHLFrame.m */,
 				231E8960249C9B6800397CB2 /* UIView+WHLNibLoad.h */,
 				231E894E249C9B6800397CB2 /* UIView+WHLNibLoad.m */,
+				235F672624C812C800980570 /* UIView+WHLRoundedCorner.h */,
+				235F672724C812C800980570 /* UIView+WHLRoundedCorner.m */,
 				235F672A24C8137A00980570 /* UIView+WHLshadowLayer.h */,
 				235F672924C8137A00980570 /* UIView+WHLshadowLayer.m */,
 				231E894B249C9B6800397CB2 /* UIViewController+WHLBarItem.h */,
 				231E895C249C9B6800397CB2 /* UIViewController+WHLBarItem.m */,
+				23618F76255BE1450082B85C /* WHL_WeakProxy.h */,
+				23618F75255BE1450082B85C /* WHL_WeakProxy.m */,
+				2340C8BC2B34443400E9ED3C /* NSObject+WHLDictPhysical.h */,
+				2340C8BB2B34443300E9ED3C /* NSObject+WHLDictPhysical.m */,
 				231E8963249C9B6800397CB2 /* WHLCateger.h */,
+				2362AF4024ECC48B0062C9FE /* WHLFullscreenPopGesture.h */,
+				2362AF4124ECC48C0062C9FE /* WHLFullscreenPopGesture.m */,
 			);
 			path = WHLCategory;
 			sourceTree = "<group>";
@@ -366,6 +376,7 @@
 			files = (
 				231E892D249C9B0700397CB2 /* ViewController.m in Sources */,
 				2362AF4224ECC48C0062C9FE /* WHLFullscreenPopGesture.m in Sources */,
+				2340C8BD2B34443400E9ED3C /* NSObject+WHLDictPhysical.m in Sources */,
 				231E8972249C9B6800397CB2 /* UIBarButtonItem+WHLCreate.m in Sources */,
 				231E896A249C9B6800397CB2 /* UIView+WHLNibLoad.m in Sources */,
 				231E8969249C9B6800397CB2 /* UINavigationBar+WHLHandle.m in Sources */,
@@ -385,6 +396,7 @@
 				231E8967249C9B6800397CB2 /* UIView+WHLCustomAlertView.m in Sources */,
 				231E8965249C9B6800397CB2 /* NSString+WHLAdditions.m in Sources */,
 				23877C1C2A08F20200C79E5F /* UIImage+WHLCompress.m in Sources */,
+				2340C8BA2B343B1600E9ED3C /* NSData+Category.m in Sources */,
 				231E892A249C9B0700397CB2 /* SceneDelegate.m in Sources */,
 				231E896B249C9B6800397CB2 /* UITextView+WHLPlaceholder.m in Sources */,
 				231E897E249CC23000397CB2 /* UIScrollView+WHLMJRefresh.m in Sources */,
@@ -539,7 +551,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5LH3X5G49F;
 				INFOPLIST_FILE = whlCategory/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -558,7 +570,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5LH3X5G49F;
 				INFOPLIST_FILE = whlCategory/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

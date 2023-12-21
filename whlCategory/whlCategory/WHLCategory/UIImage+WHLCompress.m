@@ -315,7 +315,7 @@
     newImage = UIGraphicsGetImageFromCurrentImageContext();
 
     if (newImage == nil) {
-        debug_NOFileLog(@"scale image fail");
+        NSLog(@"🔥scale image fail");
     }
 
     UIGraphicsEndImageContext();
@@ -362,7 +362,7 @@
 
     newImage = UIGraphicsGetImageFromCurrentImageContext();
     if (newImage == nil) {
-        debug_NOFileLog(@"scale image fail");
+        NSLog(@"scale image fail");
     }
 
     UIGraphicsEndImageContext();

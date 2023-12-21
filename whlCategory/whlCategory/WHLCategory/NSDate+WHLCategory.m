@@ -303,8 +303,21 @@
 {
     NSDateComponents *components1 = [CURRENT_CALENDAR components:NSYearCalendarUnit fromDate:self];
     NSDateComponents *components2 = [CURRENT_CALENDAR components:NSYearCalendarUnit fromDate:[NSDate date]];
-
     return (components1.year == (components2.year - 1));
+}
+
+///是否是周末
+- (BOOL)whl_isWeekend
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comps;
+    comps = [calendar components:(NSCalendarUnitWeekOfMonth | NSCalendarUnitWeekday | NSCalendarUnitWeekdayOrdinal)
+                        fromDate:self];
+    NSInteger weekday = [comps weekday];
+    if (weekday == 1 || weekday == 7) {
+        return YES;
+    }
+    return NO;
 }
 
 - (BOOL)whl_isEarlierThanDate:(NSDate *)aDate
@@ -665,15 +678,15 @@
     NSLog(@"date1 : %@, date2 : %@", oneDay, anotherDay);
 
 //    if (result == NSOrderedDescending) {//dateA比dateB大
-//        //debug_NOFileLog(@"Date1  is in the future");
+//        //NSLog(@"Date1  is in the future");
 //        return 1;
 //    }
 //    else if (result == NSOrderedAscending){//dateA比dateB小
 //
-//        //debug_NOFileLog(@"Date1 is in the past");
+//        //NSLog(@"Date1 is in the past");
 //        return -1;
 //    }
-//    //debug_NOFileLog(@"Both dates are the same");
+//    //NSLog(@"Both dates are the same");
 //    return 0;
     return result;
 }
@@ -682,6 +695,18 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:formaterStr];
     return [dateFormatter stringFromDate:date];
+}
+
++ (NSString *)whl_createDateFromatter:(NSString *)dateFormatterStr With:(NSTimeInterval)utcTime
+{
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateFormat = dateFormatterStr.length == 0 ? @"yyyy-MM-dd HH:mm" : dateFormatterStr;
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:utcTime / 1000.0];
+    if (!date) {
+        return @"";
+    }
+
+    return [df stringFromDate:date];
 }
 
 /**
@@ -731,7 +756,6 @@
     NSInteger iDays = lTime / 60 / 60 / 24;
     NSInteger iMonth = lTime / 60 / 60 / 24 / 12;
     NSInteger iYears = lTime / 60 / 60 / 24 / 384;
-
 //    NSInteger iSeconds = lTime % 60;
 //    NSInteger iMinutes = (lTime / 60) % 60;
 //    NSInteger iHours = (lTime / 3600);
@@ -740,6 +764,136 @@
 //    NSInteger iYears = lTime/60/60/24/384;
 
     return iYears;
+}
+
++ (NSString *)whl_getLocalDateWith:(NSTimeInterval)utcTime
+{
+    NSDateFormatter *ddff = [[NSDateFormatter alloc] init];
+    ddff.dateFormat = @"yyyy-MM-dd HH:mm";
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:utcTime / 1000.0];
+    if (!date) {
+        return @"";
+    }
+    if ([date whl_isToday]) {
+        NSDateFormatter *ddff = [[NSDateFormatter alloc] init];
+        ddff.dateFormat = @"今日 HH:mm";
+        return [ddff stringFromDate:date];
+    } else if ([date whl_isThisYear]) {
+        NSDateFormatter *ddff = [[NSDateFormatter alloc] init];
+        ddff.dateFormat = @"MM-dd HH:mm";
+        return [ddff stringFromDate:date];
+    } else {
+        NSDateFormatter *ddff = [[NSDateFormatter alloc] init];
+        ddff.dateFormat = @"yyyy-MM-dd HH:mm";
+        return [ddff stringFromDate:date];
+    }
+}
+
++ (NSString *)whl_getDateShorteneFormWith:(NSTimeInterval)utcTime
+{
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    NSString *dateString = [df stringFromDate:[NSDate date]];
+
+    NSDate *startdate = [df dateFromString:dateString];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:utcTime];
+    if (!date) {
+        return @"";
+    }
+
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond fromDate:date toDate:startdate options:0];
+    int year = (int)[components year];
+    int month = (int)[components month];
+    int day = (int)[components day];
+    int hour = (int)[components hour];
+    int minute = (int)[components minute];
+    int second = (int)[components second];
+
+    int iOffset = (hour * 60 + minute) * 60 + second;
+
+    if (year == 0 && month == 0 && day < 2) {
+        NSString *title = nil;
+        if (day <= 0) {
+            if (iOffset <= 0) {
+                int sTime = [date timeIntervalSince1970];
+                int eTime = [[NSDate date] timeIntervalSince1970];
+                int resultTime = eTime - sTime;
+                if (resultTime > 0) {
+                    if (resultTime < 3600) {
+                        if (resultTime < 60) {
+                            return [NSString stringWithFormat:@"%d秒前", resultTime];
+                        } else {
+                            return [NSString stringWithFormat:@"%d分钟前", resultTime / 60];
+                        }
+                    } else if (resultTime <= 3 * 3600 && resultTime >= 3600) {
+                        return [NSString stringWithFormat:@"%d小时前", (int)(resultTime / 3600)];
+                    } else {
+                        title = @"今天";
+                    }
+                } else {
+                    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+                    df.dateFormat = @"MM-dd";
+                    return [df stringFromDate:date];
+                }
+            } else {
+                title = @"昨天";
+            }
+        } else if (day == 1) {
+            title = @"前天";
+        }
+        NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
+        dateformatter.dateFormat = [NSString stringWithFormat:@"%@ HH:mm", title];
+        NSString *finalStr = [dateformatter stringFromDate:date];
+        if ([title isEqualToString:@"今天"]) {
+            return [finalStr stringByReplacingOccurrencesOfString:title withString:@"今天"];
+        } else if ([title isEqualToString:@"昨天"]) {
+            return [finalStr stringByReplacingOccurrencesOfString:title withString:@"昨天"];
+        } else if ([title isEqualToString:@"前天"]) {
+            return [finalStr stringByReplacingOccurrencesOfString:title withString:@"前天"];
+        }
+        return finalStr;
+    }
+    NSDateFormatter *ddff = [[NSDateFormatter alloc] init];
+    ddff.dateFormat = @"MM-dd";
+    return [ddff stringFromDate:date];
+}
+
+//使用秒数计算时间间隔
++ (NSString *)whl_getTimeStrFromInterval:(int)time
+{
+    NSString *str;
+    int tian = time / (24 * 60 * 60);
+    int shengyu = time % (24 * 60 * 60);
+    int xiaoshi = shengyu / 3600;
+    int yu = shengyu % 3600;
+    int fen = yu / 60;
+    if (!tian) {
+        if (xiaoshi) {
+            str = [NSString stringWithFormat:@"%d小时%d分", xiaoshi, fen];
+        } else {
+            str = [NSString stringWithFormat:@"%d分", fen];
+        }
+    } else str = [NSString stringWithFormat:@"%d天 %d小时%d分", tian, xiaoshi, fen];
+    return str;
+}
+
++ (NSInteger)whl_getWeekend:(NSDate *)date1 andWeekend:(NSDate *)date2
+{
+    NSMutableArray *dates = [[NSMutableArray alloc] init];
+    NSDate *date = date1;
+    while (date <= date2) {
+        [dates addObject:date];
+        [date whl_dateByAddingDays:1];
+    }
+
+    int i = 0;
+    for (NSDate *d in dates) {
+        if ([d whl_isWeekend]) {
+            i++;
+        }
+    }
+    return i;
 }
 
 @end
