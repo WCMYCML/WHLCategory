@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "WHLCategory"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
   spec.summary      = "a category for own use"
 
   # This description is used to generate tags and improve search results.
@@ -80,7 +80,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/WCMYCML/WHLCategory.git", :tag => "1.0.0" }
+  spec.source       = { :git => "https://github.com/WCMYCML/WHLCategory.git", :tag => "1.0.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
