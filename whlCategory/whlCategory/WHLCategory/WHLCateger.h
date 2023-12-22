@@ -29,13 +29,11 @@
 #import "UICollectionView+WHLRegisterCell.h"
 #import "UIViewController+WHLBarItem.h"
 #import "UIView+WHLNibLoad.h"
-#import "UIScrollView+WHLMJRefresh.h"
 #import "UITableView+WHLFootNoDateView.h"
 #import "UIView+WHLRoundedCorner.h"
 #import "UIView+WHLshadowLayer.h"
 #import "WHLFullscreenPopGesture.h"
 #import "WHL_WeakProxy.h"
-#import "NSData+Category.h"
 #import "NSObject+WHLDictPhysical.h"
 
 
