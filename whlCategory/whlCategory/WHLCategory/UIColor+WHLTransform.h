@@ -42,6 +42,23 @@ typedef NS_ENUM(NSInteger,WHLGradientChangeDirection) {
 + (UIColor *)whl_randomColor;
 
 
+/// 适配暗黑模式颜色   传入的UIColor对象
+/// @param lightColor 普通模式颜色
+/// @param darkColor 暗黑模式颜色
++ (UIColor *)whl_colorWithLightColor:(UIColor *)lightColor DarkColor:(UIColor *)darkColor;
+
+/// 适配暗黑模式颜色   颜色传入的是16进制字符串
+/// @param lightColor 普通模式颜色
+/// @param darkColor 暗黑模式颜色
++ (UIColor *)whl_colorWithLightColorStr:(NSString *)lightColor DarkColor:(NSString *)darkColor;
+
+/// 适配暗黑模式颜色   颜色传入的是16进制字符串 还有颜色的透明度
+/// @param lightColor 普通模式颜色
+/// @param lightAlpha 普通模式颜色透明度
+/// @param darkColor 暗黑模式颜色透明度
+/// @param darkAlpha 暗黑模式颜色
++ (UIColor *)whl_colorWithLightColorStr:(NSString *)lightColor WithLightColorAlpha:(CGFloat)lightAlpha DarkColor:(NSString *)darkColor WithDarkColorAlpha:(CGFloat)darkAlpha;
+
 /// 创建渐变颜色
 /// @param size 渐变size
 /// @param direction 渐变方向

@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+typedef NS_ENUM(NSInteger,whl_GradientChangeDirection) {
+    whl_GradientChangeHorizontal, //水平方向渐变
+    whl_GradientChangeVertical,//垂直方向渐变
+    whl_GradientChangeUpwardDiagonalLine,  //主对角线方向渐变
+    whl_GradientChangeDownDiagonalLine,//副对角线方向渐变
+};
+
+
 
 @interface UIView (WHLshadowLayer)
 
@@ -20,6 +27,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param cornerRadius 圆角
 - (void)whl_setLayerBackShadowWithRadius:(CGFloat)radius shadowColor:(UIColor *)shadowColor offset:(CGSize)offsetSize cornerRadius:(CGFloat)cornerRadius;
 
+
+/// 设置渐变色
+/// @param size 渐变区域大小
+/// @param direction 颜色方向
+/// @param startcolor 开始颜色
+/// @param endColor 结束颜色
+- (void)whl_colorGradientChangeWithSize:(CGSize)size direction:(whl_GradientChangeDirection)direction startColor:(UIColor*)startcolor endColor:(UIColor*)endColor;
+
+
 @end
 
-NS_ASSUME_NONNULL_END

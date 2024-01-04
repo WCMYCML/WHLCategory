@@ -89,6 +89,41 @@
     return [UIColor colorWithRed:red green:green blue:blue alpha:1];
 }
 
+/// 适配暗黑模式颜色   传入的UIColor对象
+/// @param lightColor 普通模式颜色
+/// @param darkColor 暗黑模式颜色
++ (UIColor *)whl_colorWithLightColor:(UIColor *)lightColor DarkColor:(UIColor *)darkColor {
+    if (@available(iOS 13.0, *)) {
+        return [UIColor colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull trainCollection) {
+            if ([trainCollection userInterfaceStyle] == UIUserInterfaceStyleLight) {
+                return lightColor;
+            } else {
+                return darkColor;
+            }
+        }];
+    } else {
+        return lightColor ? lightColor : (darkColor ? darkColor : [UIColor clearColor]);
+    }
+}
+
+/// 适配暗黑模式颜色   颜色传入的是16进制字符串
+/// @param lightColor 普通模式颜色
+/// @param darkColor 暗黑模式颜色
++ (UIColor *)whl_colorWithLightColorStr:(NSString *)lightColor DarkColor:(NSString *)darkColor{
+    return [UIColor whl_colorWithLightColor:[UIColor whl_colorWithHexString:lightColor] DarkColor:[UIColor whl_colorWithHexString:darkColor]];
+}
+
+
+/// 适配暗黑模式颜色   颜色传入的是16进制字符串 还有颜色的透明度
+/// @param lightColor 普通模式颜色
+/// @param lightAlpha 普通模式颜色透明度
+/// @param darkColor 暗黑模式颜色透明度
+/// @param darkAlpha 暗黑模式颜色
++ (UIColor *)whl_colorWithLightColorStr:(NSString *)lightColor WithLightColorAlpha:(CGFloat)lightAlpha DarkColor:(NSString *)darkColor WithDarkColorAlpha:(CGFloat)darkAlpha{
+    return [UIColor whl_colorWithLightColor:[UIColor whl_colorWithHexString:lightColor alpha:lightAlpha] DarkColor:[UIColor whl_colorWithHexString:darkColor alpha:darkAlpha]];
+}
+
+
 + (UIColor *)whl_colorGradientChangeWithSize:(CGSize)size direction:(WHLGradientChangeDirection)direction startColor:(UIColor *)startcolor endColor:(UIColor *)endColor {
     if (CGSizeEqualToSize(size, CGSizeZero) || !startcolor || !endColor) {
         return nil;
