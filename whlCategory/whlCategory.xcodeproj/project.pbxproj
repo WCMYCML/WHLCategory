@@ -39,9 +39,9 @@
 		235F672B24C8137B00980570 /* UIView+WHLshadowLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 235F672924C8137A00980570 /* UIView+WHLshadowLayer.m */; };
 		23618F77255BE1450082B85C /* WHL_WeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 23618F75255BE1450082B85C /* WHL_WeakProxy.m */; };
 		2362AF4224ECC48C0062C9FE /* WHLFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 2362AF4124ECC48C0062C9FE /* WHLFullscreenPopGesture.m */; };
-		236E997024B70954003F552F /* NSObject+WHLRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 236E996E24B70954003F552F /* NSObject+WHLRuntime.m */; };
 		23877C1C2A08F20200C79E5F /* UIImage+WHLCompress.m in Sources */ = {isa = PBXBuildFile; fileRef = 23877C1B2A08F20200C79E5F /* UIImage+WHLCompress.m */; };
 		23877C1F2A08F29300C79E5F /* UIImage+WHLProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 23877C1E2A08F29300C79E5F /* UIImage+WHLProperty.m */; };
+		23D8EF5D2B52698800A8052B /* NSObject+WHLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D8EF5C2B52698800A8052B /* NSObject+WHLExtension.m */; };
 		3A7EE20BBC8C6ACFB5EA4BC9 /* Pods_whlCategory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B810854740E8DE516100554E /* Pods_whlCategory.framework */; };
 /* End PBXBuildFile section */
 
@@ -111,12 +111,12 @@
 		23618F76255BE1450082B85C /* WHL_WeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHL_WeakProxy.h; sourceTree = "<group>"; };
 		2362AF4024ECC48B0062C9FE /* WHLFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHLFullscreenPopGesture.h; sourceTree = "<group>"; };
 		2362AF4124ECC48C0062C9FE /* WHLFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHLFullscreenPopGesture.m; sourceTree = "<group>"; };
-		236E996E24B70954003F552F /* NSObject+WHLRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WHLRuntime.m"; sourceTree = "<group>"; };
-		236E996F24B70954003F552F /* NSObject+WHLRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+WHLRuntime.h"; sourceTree = "<group>"; };
 		23877C1A2A08F20200C79E5F /* UIImage+WHLCompress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WHLCompress.h"; sourceTree = "<group>"; };
 		23877C1B2A08F20200C79E5F /* UIImage+WHLCompress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WHLCompress.m"; sourceTree = "<group>"; };
 		23877C1D2A08F29300C79E5F /* UIImage+WHLProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WHLProperty.h"; sourceTree = "<group>"; };
 		23877C1E2A08F29300C79E5F /* UIImage+WHLProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WHLProperty.m"; sourceTree = "<group>"; };
+		23D8EF5B2B52698800A8052B /* NSObject+WHLExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+WHLExtension.h"; sourceTree = "<group>"; };
+		23D8EF5C2B52698800A8052B /* NSObject+WHLExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WHLExtension.m"; sourceTree = "<group>"; };
 		B810854740E8DE516100554E /* Pods_whlCategory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_whlCategory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -187,8 +187,6 @@
 				231E8956249C9B6800397CB2 /* NSDate+WHLCategory.m */,
 				231E895D249C9B6800397CB2 /* NSDictionary+WHLCategory.h */,
 				231E894A249C9B6800397CB2 /* NSDictionary+WHLCategory.m */,
-				236E996F24B70954003F552F /* NSObject+WHLRuntime.h */,
-				236E996E24B70954003F552F /* NSObject+WHLRuntime.m */,
 				231E8953249C9B6800397CB2 /* NSString+WHLAdditions.h */,
 				231E8941249C9B6800397CB2 /* NSString+WHLAdditions.m */,
 				231E8952249C9B6800397CB2 /* NSString+WHLAES128.h */,
@@ -238,6 +236,8 @@
 				231E8963249C9B6800397CB2 /* WHLCateger.h */,
 				2362AF4024ECC48B0062C9FE /* WHLFullscreenPopGesture.h */,
 				2362AF4124ECC48C0062C9FE /* WHLFullscreenPopGesture.m */,
+				23D8EF5B2B52698800A8052B /* NSObject+WHLExtension.h */,
+				23D8EF5C2B52698800A8052B /* NSObject+WHLExtension.m */,
 			);
 			path = WHLCategory;
 			sourceTree = "<group>";
@@ -352,7 +352,7 @@
 				231E8972249C9B6800397CB2 /* UIBarButtonItem+WHLCreate.m in Sources */,
 				231E896A249C9B6800397CB2 /* UIView+WHLNibLoad.m in Sources */,
 				231E8969249C9B6800397CB2 /* UINavigationBar+WHLHandle.m in Sources */,
-				236E997024B70954003F552F /* NSObject+WHLRuntime.m in Sources */,
+				23D8EF5D2B52698800A8052B /* NSObject+WHLExtension.m in Sources */,
 				231E8927249C9B0700397CB2 /* AppDelegate.m in Sources */,
 				235F672B24C8137B00980570 /* UIView+WHLshadowLayer.m in Sources */,
 				231E8968249C9B6800397CB2 /* NSDictionary+WHLCategory.m in Sources */,

@@ -25,9 +25,9 @@ typedef enum : NSUInteger {
 } WHLPreViewDisplayMode;
 
 @interface WHLFullscreenPopGesture : NSObject
-@property (class, nonatomic) WHLFullscreenPopGestureType gestureType;
-@property (class, nonatomic) WHLFullscreenPopGestureTransitionMode transitionMode;
-@property (class, nonatomic) CGFloat maxOffsetToTriggerPop;
+@property (class, nonatomic) WHLFullscreenPopGestureType whl_gestureType;
+@property (class, nonatomic) WHLFullscreenPopGestureTransitionMode whl_transitionMode;
+@property (class, nonatomic) CGFloat whl_maxOffsetToTriggerPop;
 @end
 
 
@@ -35,8 +35,8 @@ typedef void (^_WHLViewControllerWillAppearInjectBlock)(UIViewController *viewCo
 
 @interface UIViewController (WHLExtendedFullscreenPopGesture)
 @property (nonatomic, copy) _WHLViewControllerWillAppearInjectBlock whl_willAppearInjectBlock;
-@property (nonatomic) WHLPreViewDisplayMode WHL_displayMode;
-@property (nonatomic) BOOL WHL_disableFullscreenGesture;
+@property (nonatomic) WHLPreViewDisplayMode whl_displayMode;
+@property (nonatomic) BOOL whl_disableFullscreenGesture;
 
 
 /**
@@ -47,18 +47,18 @@ typedef void (^_WHLViewControllerWillAppearInjectBlock)(UIViewController *viewCo
 /// checked when view controller based navigation bar's appearance is enabled.
 /// Default to NO, bars are more likely to show.
 
-@property (nonatomic, assign) BOOL WHL_prefersNavigationBarHidden;
-@property (nonatomic, copy, nullable) NSArray<NSValue *> *WHL_blindArea;
-@property (nonatomic, copy, nullable) NSArray<UIView *> *WHL_blindAreaViews;
-@property (nonatomic, copy, nullable) void(^WHL_viewWillBeginDragging)(__kindof UIViewController *vc);
-@property (nonatomic, copy, nullable) void(^WHL_viewDidDrag)(__kindof UIViewController *vc);
-@property (nonatomic, copy, nullable) void(^WHL_viewDidEndDragging)(__kindof UIViewController *vc);
-@property (nonatomic, strong, nullable) WKWebView *WHL_considerWebView;
+@property (nonatomic, assign) BOOL whl_prefersNavigationBarHidden;
+@property (nonatomic, copy, nullable) NSArray<NSValue *> *whl_blindArea;
+@property (nonatomic, copy, nullable) NSArray<UIView *> *whl_blindAreaViews;
+@property (nonatomic, copy, nullable) void(^whl_viewWillBeginDragging)(__kindof UIViewController *vc);
+@property (nonatomic, copy, nullable) void(^whl_viewDidDrag)(__kindof UIViewController *vc);
+@property (nonatomic, copy, nullable) void(^whl_viewDidEndDragging)(__kindof UIViewController *vc);
+@property (nonatomic, strong, nullable) WKWebView *whl_considerWebView;
 
 @end
 
 @interface UINavigationController (WHLExtendedFullscreenPopGesture)
-@property (nonatomic, readonly) UIGestureRecognizerState WHL_fullscreenGestureState;
+@property (nonatomic, readonly) UIGestureRecognizerState whl_fullscreenGestureState;
 @end
 
 @interface UINavigationController (WHLPrefersNavigationBar)

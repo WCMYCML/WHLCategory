@@ -33,19 +33,19 @@ NS_ASSUME_NONNULL_BEGIN
 
     if ([[nav valueForKey:@"isTransitioning"] boolValue]) return false;
 
-    if (nav.topViewController.WHL_disableFullscreenGesture) return false;
+    if (nav.topViewController.whl_disableFullscreenGesture) return false;
 
     if ([self _blindAreaContains:nav point:[touch locationInView:nav.view]]) return false;
 
     if ([nav.childViewControllers.lastObject isKindOfClass:UINavigationController.class]) return false;
 
-    if (nav.topViewController.WHL_considerWebView) return !nav.topViewController.WHL_considerWebView.canGoBack;
+    if (nav.topViewController.whl_considerWebView) return !nav.topViewController.whl_considerWebView.canGoBack;
 
     return true;
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer {
-    if (WHLFullscreenPopGesture.gestureType == WHLFullscreenPopGestureTypeEdgeLeft) return true;
+    if (WHLFullscreenPopGesture.whl_gestureType == WHLFullscreenPopGestureTypeEdgeLeft) return true;
 
     CGPoint translate = [gestureRecognizer translationInView:gestureRecognizer.view];
 
@@ -58,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
     if (gestureRecognizer.state == UIGestureRecognizerStateFailed ||
         gestureRecognizer.state == UIGestureRecognizerStateCancelled) return false;
 
-    if (WHLFullscreenPopGesture.gestureType == WHLFullscreenPopGestureTypeEdgeLeft) {
+    if (WHLFullscreenPopGesture.whl_gestureType == WHLFullscreenPopGestureTypeEdgeLeft) {
         [self _cancelGesture:otherGestureRecognizer];
         return true;
     }
@@ -137,11 +137,11 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (BOOL)_blindAreaContains:(UINavigationController *)nav point:(CGPoint)point {
-    for (NSValue *rect in nav.topViewController.WHL_blindArea) {
+    for (NSValue *rect in nav.topViewController.whl_blindArea) {
         if ([self _rectContains:nav rect:[rect CGRectValue] point:point shouldConvertRect:YES]) return true;
     }
 
-    for (UIView *view in nav.topViewController.WHL_blindAreaViews) {
+    for (UIView *view in nav.topViewController.whl_blindAreaViews) {
         if ([self _rectContains:nav rect:[view frame] point:point shouldConvertRect:YES]) return true;
     }
 
@@ -183,7 +183,7 @@ NS_ASSUME_NONNULL_BEGIN
         _rootView.backgroundColor = UIColor.whiteColor;
 
         // snapshot
-        switch (target.WHL_displayMode) {
+        switch (target.whl_displayMode) {
             case WHLPreViewDisplayModeSnapshot: {
                 UIView *superview = nav.tabBarController != nil ? nav.tabBarController.view : nav.view;
                 UIView *snapshot = [superview snapshotViewAfterScreenUpdates:NO];
@@ -213,7 +213,7 @@ NS_ASSUME_NONNULL_BEGIN
         }
 
         // mask
-        if (WHLFullscreenPopGesture.transitionMode == WHLFullscreenPopGestureTransitionModeMaskAndShifting) {
+        if (WHLFullscreenPopGesture.whl_transitionMode == WHLFullscreenPopGestureTransitionModeMaskAndShifting) {
             _maskView = [[UIView alloc] initWithFrame:_rootView.bounds];
             _maskView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.8];
             [_rootView addSubview:_maskView];
@@ -223,13 +223,13 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)began {
-    if (_target.WHL_displayMode == WHLPreViewDisplayModeOrigin) {
+    if (_target.whl_displayMode == WHLPreViewDisplayModeOrigin) {
         [_rootView insertSubview:_target.view atIndex:0];
     }
 }
 
 - (void)completed {
-    if (_target.WHL_displayMode == WHLPreViewDisplayModeOrigin &&
+    if (_target.whl_displayMode == WHLPreViewDisplayModeOrigin &&
         _target.view.superview == _rootView) {
         [_target.view removeFromSuperview];
     }
@@ -240,15 +240,19 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark -
 
 @interface UIViewController (_WHLFullscreenPopGesturePrivate)
-@property (nonatomic, strong, nullable) WHLSnapshot *WHL_previousViewControllerSnapshot;
+@property (nonatomic, strong, nullable) WHLSnapshot *whl_previousViewControllerSnapshot;
 @end
 
 @implementation UIViewController (_WHLFullscreenPopGesturePrivate)
-- (void)setWHL_previousViewControllerSnapshot:(nullable WHLSnapshot *)WHL_previousViewControllerSnapshot {
-    objc_setAssociatedObject(self, @selector(WHL_previousViewControllerSnapshot), WHL_previousViewControllerSnapshot, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
+
+- (void)setWhl_previousViewControllerSnapshot:( nullable WHLSnapshot *)whl_previousViewControllerSnapshot{
+    objc_setAssociatedObject(self, @selector(whl_previousViewControllerSnapshot), whl_previousViewControllerSnapshot, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
 }
 
-- (nullable WHLSnapshot *)WHL_previousViewControllerSnapshot {
+
+- (nullable WHLSnapshot *)whl_previousViewControllerSnapshot {
     return objc_getAssociatedObject(self, _cmd);
 }
 
@@ -283,12 +287,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)pushWithNav:(UINavigationController *)nav viewController:(UIViewController *)viewController {
     UIViewController *last = nav.childViewControllers.lastObject;
     if (last != nil) {
-        viewController.WHL_previousViewControllerSnapshot = [WHLSnapshot.alloc initWithTarget:last];
+        viewController.whl_previousViewControllerSnapshot = [WHLSnapshot.alloc initWithTarget:last];
     }
 }
 
 - (void)beganWithNav:(UINavigationController *)nav viewController:(UIViewController *)viewController offset:(CGFloat)offset {
-    WHLSnapshot *snapshot = viewController.WHL_previousViewControllerSnapshot;
+    WHLSnapshot *snapshot = viewController.whl_previousViewControllerSnapshot;
     if (snapshot == nil) return;
 
     // keyboard
@@ -300,22 +304,22 @@ NS_ASSUME_NONNULL_BEGIN
 
     snapshot.rootView.transform = CGAffineTransformMakeTranslation(self.shift, 0);
 
-    if (WHLFullscreenPopGesture.transitionMode == WHLFullscreenPopGestureTransitionModeMaskAndShifting) {
+    if (WHLFullscreenPopGesture.whl_transitionMode == WHLFullscreenPopGestureTransitionModeMaskAndShifting) {
         snapshot.maskView.alpha = 1;
         CGFloat width = snapshot.rootView.frame.size.width;
         snapshot.maskView.transform = CGAffineTransformMakeTranslation(-(self.shift + width), 0);
     }
 
     //
-    if (viewController.WHL_viewWillBeginDragging) {
-        viewController.WHL_viewWillBeginDragging(viewController);
+    if (viewController.whl_viewWillBeginDragging) {
+        viewController.whl_viewWillBeginDragging(viewController);
     }
 
     [self changedWithNav:nav viewController:viewController offset:offset];
 }
 
 - (void)changedWithNav:(UINavigationController *)nav viewController:(UIViewController *)viewController offset:(CGFloat)offset {
-    WHLSnapshot *snapshot = viewController.WHL_previousViewControllerSnapshot;
+    WHLSnapshot *snapshot = viewController.whl_previousViewControllerSnapshot;
     if (snapshot == nil) return;
 
     if (offset < 0) offset = 0;
@@ -325,23 +329,23 @@ NS_ASSUME_NONNULL_BEGIN
     CGFloat width = snapshot.rootView.frame.size.width;
     CGFloat rate = offset / width;
     snapshot.rootView.transform = CGAffineTransformMakeTranslation(self.shift * (1 - rate), 0);
-    if (WHLFullscreenPopGesture.transitionMode == WHLFullscreenPopGestureTransitionModeMaskAndShifting) {
+    if (WHLFullscreenPopGesture.whl_transitionMode == WHLFullscreenPopGestureTransitionModeMaskAndShifting) {
         snapshot.maskView.alpha = 1 - rate;
         snapshot.maskView.transform = CGAffineTransformMakeTranslation(-(self.shift + width) + (self.shift * rate) + offset, 0);
     }
     //
-    if (viewController.WHL_viewDidDrag) {
-        viewController.WHL_viewDidDrag(viewController);
+    if (viewController.whl_viewDidDrag) {
+        viewController.whl_viewDidDrag(viewController);
     }
 }
 
 - (void)completedWithNav:(UINavigationController *)nav viewController:(UIViewController *)viewController offset:(CGFloat)offset {
-    WHLSnapshot *snapshot = viewController.WHL_previousViewControllerSnapshot;
+    WHLSnapshot *snapshot = viewController.whl_previousViewControllerSnapshot;
     if (snapshot == nil) return;
 
     CGFloat screenwidth = nav.view.frame.size.width;
     CGFloat rate = offset / screenwidth;
-    CGFloat maxOffset = WHLFullscreenPopGesture.maxOffsetToTriggerPop;
+    CGFloat maxOffset = WHLFullscreenPopGesture.whl_maxOffsetToTriggerPop;
     BOOL shouldPop = rate > maxOffset;
     CGFloat animDuration = 0.25;
 
@@ -369,8 +373,8 @@ NS_ASSUME_NONNULL_BEGIN
             [nav popViewControllerAnimated:false];
         }
 
-        if (viewController.WHL_viewDidEndDragging) {
-            viewController.WHL_viewDidEndDragging(viewController);
+        if (viewController.whl_viewDidEndDragging) {
+            viewController.whl_viewDidEndDragging(viewController);
         }
     }];
 }
@@ -380,7 +384,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark -
 
 @interface UINavigationController (_WHLFullscreenPopGesturePrivate)
-@property (nonatomic, strong, readonly) UIPanGestureRecognizer *WHL_fullscreenGesture;
+@property (nonatomic, strong, readonly) UIPanGestureRecognizer *whl_fullscreenGesture;
 @end
 
 @implementation UINavigationController (_WHLFullscreenPopGesturePrivate)
@@ -389,7 +393,7 @@ NS_ASSUME_NONNULL_BEGIN
     dispatch_once(&onceToken, ^{
         Class cls = UINavigationController.class;
         SEL originalSelector = @selector(pushViewController:animated:);
-        SEL swizzledSelector = @selector(WHL_pushViewController:animated:);
+        SEL swizzledSelector = @selector(whl_pushViewController:animated:);
 
         Method originalMethod = class_getInstanceMethod(cls, originalSelector);
         Method swizzledMethod = class_getInstanceMethod(cls, swizzledSelector);
@@ -397,13 +401,13 @@ NS_ASSUME_NONNULL_BEGIN
     });
 }
 
-- (void)WHL_pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    [self WHL_setupIfNeeded];
+- (void)whl_pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    [self whl_setupIfNeeded];
     [WHLTransitionHandler.shared pushWithNav:self viewController:viewController];
-    [self WHL_pushViewController:viewController animated:animated];
+    [self whl_pushViewController:viewController animated:animated];
 }
 
-- (void)WHL_setupIfNeeded {
+- (void)whl_setupIfNeeded {
     if (self.interactivePopGestureRecognizer == nil) return;
 
     if ([objc_getAssociatedObject(self, _cmd) boolValue]) return;
@@ -421,13 +425,13 @@ NS_ASSUME_NONNULL_BEGIN
     self.view.layer.shadowRadius = 2;
     self.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.view.bounds].CGPath;
     [CATransaction commit];
-    [self.view addGestureRecognizer:self.WHL_fullscreenGesture];
+    [self.view addGestureRecognizer:self.whl_fullscreenGesture];
 }
 
-- (UIPanGestureRecognizer *)WHL_fullscreenGesture {
+- (UIPanGestureRecognizer *)whl_fullscreenGesture {
     UIPanGestureRecognizer *_Nullable gesture = objc_getAssociatedObject(self, _cmd);
     if (gesture == nil) {
-        if (WHLFullscreenPopGesture.gestureType == WHLFullscreenPopGestureTypeEdgeLeft) {
+        if (WHLFullscreenPopGesture.whl_gestureType == WHLFullscreenPopGestureTypeEdgeLeft) {
             gesture = UIScreenEdgePanGestureRecognizer.alloc.init;
             [(UIScreenEdgePanGestureRecognizer *)gesture setEdges:UIRectEdgeLeft];
         } else {
@@ -436,13 +440,13 @@ NS_ASSUME_NONNULL_BEGIN
 
         gesture.delaysTouchesBegan = YES;
         gesture.delegate = WHLFullscreenPopGestureDelegate.shared;
-        [gesture addTarget:self action:@selector(WHL_handleFullscreenGesture:)];
+        [gesture addTarget:self action:@selector(whl_handleFullscreenGesture:)];
         objc_setAssociatedObject(self, _cmd, gesture, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return gesture;
 }
 
-- (void)WHL_handleFullscreenGesture:(UIPanGestureRecognizer *)gesture {
+- (void)whl_handleFullscreenGesture:(UIPanGestureRecognizer *)gesture {
     CGFloat offset = [gesture translationInView:gesture.view].x;
     switch (gesture.state) {
         case UIGestureRecognizerStateBegan:
@@ -464,31 +468,39 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark -
 
 @implementation WHLFullscreenPopGesture
-static WHLFullscreenPopGestureType _gestureType = WHLFullscreenPopGestureTypeEdgeLeft;
-+ (void)setGestureType:(WHLFullscreenPopGestureType)gestureType {
-    _gestureType = gestureType;
+
+static WHLFullscreenPopGestureType _whl_gestureType = WHLFullscreenPopGestureTypeEdgeLeft;
+
++ (void)setWhl_gestureType:(WHLFullscreenPopGestureType)whl_gestureType{
+    _whl_gestureType = whl_gestureType;
+
 }
 
-+ (WHLFullscreenPopGestureType)gestureType {
-    return _gestureType;
++ (WHLFullscreenPopGestureType)whl_gestureType {
+    return _whl_gestureType;
 }
 
-static WHLFullscreenPopGestureTransitionMode _transitionMode = WHLFullscreenPopGestureTransitionModeShifting;
-+ (void)setTransitionMode:(WHLFullscreenPopGestureTransitionMode)transitionMode {
-    _transitionMode = transitionMode;
-}
+static WHLFullscreenPopGestureTransitionMode _whl_whl_transitionMode = WHLFullscreenPopGestureTransitionModeShifting;
 
+
++ (void)setWhl_whl_transitionMode:(WHLFullscreenPopGestureTransitionMode)whl_whl_transitionMode{
+    _whl_whl_transitionMode = whl_whl_transitionMode;
+
+    
+}
 + (WHLFullscreenPopGestureTransitionMode)transitionMode {
-    return _transitionMode;
+    return _whl_whl_transitionMode;
 }
 
-static CGFloat _maxOffsetToTriggerPop = 0.35;
-+ (void)setMaxOffsetToTriggerPop:(CGFloat)maxOffsetToTriggerPop {
-    _maxOffsetToTriggerPop = maxOffsetToTriggerPop;
+static CGFloat _whl_maxOffsetToTriggerPop = 0.35;
+
++ (void)setWhl_maxOffsetToTriggerPop:(CGFloat)whl_maxOffsetToTriggerPop{
+    _whl_maxOffsetToTriggerPop = whl_maxOffsetToTriggerPop;
+
 }
 
-+ (CGFloat)maxOffsetToTriggerPop {
-    return _maxOffsetToTriggerPop;
++ (CGFloat)whl_maxOffsetToTriggerPop {
+    return _whl_maxOffsetToTriggerPop;
 }
 
 @end
@@ -526,78 +538,78 @@ static CGFloat _maxOffsetToTriggerPop = 0.35;
 }
 
 #pragma mark - ******************** end ***************************************
-- (void)setWHL_displayMode:(WHLPreViewDisplayMode)WHL_displayMode {
+- (void)setwhl_displayMode:(WHLPreViewDisplayMode)whl_displayMode {
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    objc_setAssociatedObject(self, @selector(WHL_displayMode), @(WHL_displayMode), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(whl_displayMode), @(whl_displayMode), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (WHLPreViewDisplayMode)WHL_displayMode {
+- (WHLPreViewDisplayMode)whl_displayMode {
     return [objc_getAssociatedObject(self, _cmd) integerValue];
 }
 
-- (void)setWHL_disableFullscreenGesture:(BOOL)WHL_disableFullscreenGesture {
-    objc_setAssociatedObject(self, @selector(WHL_disableFullscreenGesture), @(WHL_disableFullscreenGesture), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setwhl_disableFullscreenGesture:(BOOL)whl_disableFullscreenGesture {
+    objc_setAssociatedObject(self, @selector(whl_disableFullscreenGesture), @(whl_disableFullscreenGesture), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (BOOL)WHL_disableFullscreenGesture {
+- (BOOL)whl_disableFullscreenGesture {
     return [objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
-- (BOOL)WHL_prefersNavigationBarHidden
+- (BOOL)whl_prefersNavigationBarHidden
 {
     return [objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
-- (void)setWHL_prefersNavigationBarHidden:(BOOL)hidden {
-    objc_setAssociatedObject(self, @selector(WHL_prefersNavigationBarHidden), @(hidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setwhl_prefersNavigationBarHidden:(BOOL)hidden {
+    objc_setAssociatedObject(self, @selector(whl_prefersNavigationBarHidden), @(hidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void)setWHL_blindArea:(nullable NSArray<NSValue *> *)WHL_blindArea {
-    objc_setAssociatedObject(self, @selector(WHL_blindArea), WHL_blindArea, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setwhl_blindArea:(nullable NSArray<NSValue *> *)whl_blindArea {
+    objc_setAssociatedObject(self, @selector(whl_blindArea), whl_blindArea, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (nullable NSArray<NSValue *> *)WHL_blindArea {
+- (nullable NSArray<NSValue *> *)whl_blindArea {
     return objc_getAssociatedObject(self, _cmd);
 }
 
-- (void)setWHL_blindAreaViews:(nullable NSArray<UIView *> *)WHL_blindAreaViews {
-    objc_setAssociatedObject(self, @selector(WHL_blindAreaViews), WHL_blindAreaViews, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setwhl_blindAreaViews:(nullable NSArray<UIView *> *)whl_blindAreaViews {
+    objc_setAssociatedObject(self, @selector(whl_blindAreaViews), whl_blindAreaViews, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (nullable NSArray<UIView *> *)WHL_blindAreaViews {
+- (nullable NSArray<UIView *> *)whl_blindAreaViews {
     return objc_getAssociatedObject(self, _cmd);
 }
 
-- (void)setWHL_viewWillBeginDragging:(void (^_Nullable)(__kindof UIViewController *_Nonnull))WHL_viewWillBeginDragging {
-    objc_setAssociatedObject(self, @selector(WHL_viewWillBeginDragging), WHL_viewWillBeginDragging, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setwhl_viewWillBeginDragging:(void (^_Nullable)(__kindof UIViewController *_Nonnull))whl_viewWillBeginDragging {
+    objc_setAssociatedObject(self, @selector(whl_viewWillBeginDragging), whl_viewWillBeginDragging, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (void (^_Nullable)(__kindof UIViewController *_Nonnull))WHL_viewWillBeginDragging {
+- (void (^_Nullable)(__kindof UIViewController *_Nonnull))whl_viewWillBeginDragging {
     return objc_getAssociatedObject(self, _cmd);
 }
 
-- (void)setWHL_viewDidDrag:(void (^_Nullable)(__kindof UIViewController *_Nonnull))WHL_viewDidDrag {
-    objc_setAssociatedObject(self, @selector(WHL_viewDidDrag), WHL_viewDidDrag, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setwhl_viewDidDrag:(void (^_Nullable)(__kindof UIViewController *_Nonnull))whl_viewDidDrag {
+    objc_setAssociatedObject(self, @selector(whl_viewDidDrag), whl_viewDidDrag, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (void (^_Nullable)(__kindof UIViewController *_Nonnull))WHL_viewDidDrag {
+- (void (^_Nullable)(__kindof UIViewController *_Nonnull))whl_viewDidDrag {
     return objc_getAssociatedObject(self, _cmd);
 }
 
-- (void)setWHL_viewDidEndDragging:(void (^_Nullable)(__kindof UIViewController *_Nonnull))WHL_viewDidEndDragging {
-    objc_setAssociatedObject(self, @selector(WHL_viewDidEndDragging), WHL_viewDidEndDragging, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setwhl_viewDidEndDragging:(void (^_Nullable)(__kindof UIViewController *_Nonnull))whl_viewDidEndDragging {
+    objc_setAssociatedObject(self, @selector(whl_viewDidEndDragging), whl_viewDidEndDragging, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (void (^_Nullable)(__kindof UIViewController *_Nonnull))WHL_viewDidEndDragging {
+- (void (^_Nullable)(__kindof UIViewController *_Nonnull))whl_viewDidEndDragging {
     return objc_getAssociatedObject(self, _cmd);
 }
 
-- (void)setWHL_considerWebView:(nullable WKWebView *)WHL_considerWebView {
-    WHL_considerWebView.allowsBackForwardNavigationGestures = YES;
-    objc_setAssociatedObject(self, @selector(WHL_considerWebView), WHL_considerWebView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setwhl_considerWebView:(nullable WKWebView *)whl_considerWebView {
+    whl_considerWebView.allowsBackForwardNavigationGestures = YES;
+    objc_setAssociatedObject(self, @selector(whl_considerWebView), whl_considerWebView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (nullable WKWebView *)WHL_considerWebView {
+- (nullable WKWebView *)whl_considerWebView {
     return objc_getAssociatedObject(self, _cmd);
 }
 
@@ -605,8 +617,8 @@ static CGFloat _maxOffsetToTriggerPop = 0.35;
 
 #pragma mark -
 @implementation UINavigationController (WHLExtendedFullscreenPopGesture)
-- (UIGestureRecognizerState)WHL_fullscreenGestureState {
-    return self.WHL_fullscreenGesture.state;
+- (UIGestureRecognizerState)whl_fullscreenGestureState {
+    return self.whl_fullscreenGesture.state;
 }
 
 @end
@@ -640,7 +652,7 @@ static CGFloat _maxOffsetToTriggerPop = 0.35;
     _WHLViewControllerWillAppearInjectBlock block = ^(UIViewController *viewController, BOOL animated) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (strongSelf) {
-            [strongSelf setNavigationBarHidden:viewController.WHL_prefersNavigationBarHidden animated:animated];
+            [strongSelf setNavigationBarHidden:viewController.whl_prefersNavigationBarHidden animated:animated];
         }
     };
     // Setup will appear inject block to appearing view controller.

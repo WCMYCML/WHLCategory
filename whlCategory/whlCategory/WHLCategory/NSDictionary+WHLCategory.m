@@ -41,4 +41,19 @@
     return [value boolValue];
 }
 
+- (NSString *)whl_dictionaryToJsonString {
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[self copy] options:NSJSONWritingPrettyPrinted error:&error];
+    NSString *jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return jsonString;
+}
+
+- (NSString *)whl_dictionaryToJsonStringNoSpace {
+    NSString *jsonString = [self whl_dictionaryToJsonString];
+    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    jsonString = [jsonString stringByReplacingOccurrencesOfString:@" " withString:@""];
+    return jsonString;
+}
+
+
 @end

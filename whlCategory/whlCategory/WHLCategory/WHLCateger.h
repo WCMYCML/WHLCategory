@@ -35,5 +35,6 @@
 #import "WHLFullscreenPopGesture.h"
 #import "WHL_WeakProxy.h"
 #import "NSObject+WHLDictPhysical.h"
+#import "NSObject+WHLExtension.h"
 
 

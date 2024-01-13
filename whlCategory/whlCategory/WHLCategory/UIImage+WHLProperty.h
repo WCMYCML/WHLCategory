@@ -36,4 +36,8 @@ typedef NS_ENUM(NSInteger, UIImageSourceType) {
 @property (nonatomic, assign) BOOL isWatermarkForTime;
 
 
+
+/// 是否是png,判断依据是否含有alpha通道
+- (BOOL)whl_isPngImage;
+
 @end

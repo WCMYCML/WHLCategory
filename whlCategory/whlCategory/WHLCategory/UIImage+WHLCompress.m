@@ -95,7 +95,7 @@
     return img;
 }
 
-- (NSData *)compressedImageWitnLength:(NSInteger)maxLength
+- (NSData *)whl_compressedImageWitnLength:(NSInteger)maxLength
 {
     CGFloat compression = 1;
     NSData *data = UIImageJPEGRepresentation(self, compression);
@@ -106,7 +106,7 @@
     return data;
 }
 
-- (UIImage *)compressedImage
+- (UIImage *)whl_compressedImage
 {
     CGSize imageSize = self.size;
     CGFloat width = imageSize.width;
@@ -150,14 +150,14 @@
     return newImage;
 }
 
-- (NSData *)compressedData:(CGFloat)compressionQuality
+- (NSData *)whl_compressedData:(CGFloat)compressionQuality
 {
     assert(compressionQuality <= 1.0 && compressionQuality >= 0);
 
     return UIImageJPEGRepresentation(self, compressionQuality);
 }
 
-- (CGFloat)compressionQuality
+- (CGFloat)whl_compressionQuality
 {
     NSData *data = UIImageJPEGRepresentation(self, 1.0);
     return 1.0 / (data.length / MAX_IMAGEDATA_LEN);
@@ -169,14 +169,29 @@
     //    }
 }
 
+/// 裁剪出指定rect的图片(限定在自己的size之内) 内部已考虑到retina图片,rect不必为retina图片进行x2处理
+/// @param rect 指定的矩形区域,坐标系为图片坐标系,原点在图片的左上角
+- (UIImage *)whl_cropImageWithRect:(CGRect)cropRect {
+    CGRect bounds = CGRectMake(0, 0, self.size.width, self.size.height);
+    cropRect = CGRectIntersection(bounds, cropRect);//限制在自己的尺寸里面
+    CGRect drawRect = CGRectMake(-cropRect.origin.x, -cropRect.origin.y, self.size.width * self.scale, self.size.height * self.scale);
+    UIGraphicsBeginImageContext(cropRect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextClearRect(context, CGRectMake(0, 0, cropRect.size.width, cropRect.size.height));
+    [self drawInRect:drawRect];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
 #pragma mark - 压缩 图片 大小
-- (NSData *)compressedData
+- (NSData *)whl_compressedData
 {
-    CGFloat quality = [self compressionQuality];
+    CGFloat quality = [self whl_compressionQuality];
     NSInteger lastLnegth = 0;
     NSData *data = nil;
     while (!data || data.length > MAX_IMAGEDATA_LEN) {
-        data = [self compressedData:MAX(quality, 0)];
+        data = [self whl_compressedData:MAX(quality, 0)];
         if (data.length < lastLnegth + 100 || data.length > lastLnegth - 100) { //已经 不能在压缩了
             break;
         }
@@ -187,7 +202,7 @@
 }
 
 #pragma mark - 修改图片的边长 最大的
-- (UIImage *)changeImageWithPix:(CGFloat)pix
+- (UIImage *)whl_changeImageWithPix:(CGFloat)pix
 {
     CGSize imageSize = self.size;
     CGFloat width = imageSize.width;
@@ -214,7 +229,7 @@
 }
 
 #pragma mark - 在右下角 加上 文字水印（nil  时间水印）
-- (UIImage *)waterMarkImageContent:(NSString *)conStr
+- (UIImage *)whl_aterMarkImageContent:(NSString *)conStr
 {
     // 1. 获得图像上下文
     UIGraphicsBeginImageContext(self.size);
@@ -239,14 +254,14 @@
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
     style.alignment = NSTextAlignmentRight;
     NSDictionary *dic = @{
-        NSFontAttributeName: [UIFont systemFontOfSize:self.size.height / 50],
+            NSFontAttributeName: [UIFont systemFontOfSize:self.size.height / 50],
 
-        NSParagraphStyleAttributeName: style,
+            NSParagraphStyleAttributeName: style,
 
-        NSBaselineOffsetAttributeName: [NSNumber numberWithInt:NSLineBreakByWordWrapping],
+            NSBaselineOffsetAttributeName: [NSNumber numberWithInt:NSLineBreakByWordWrapping],
 
-        NSBackgroundColorAttributeName: [UIColor whiteColor],
-        NSForegroundColorAttributeName: (conStr.length ? [UIColor blackColor] : [UIColor redColor]),
+            NSBackgroundColorAttributeName: [UIColor whiteColor],
+            NSForegroundColorAttributeName: (conStr.length ? [UIColor blackColor] : [UIColor redColor]),
     };
     //     画 文字 (rect是相对于图像上得位置)
     //     4. 从图像上下文中获得当前绘制的结果 生产图像
@@ -260,7 +275,7 @@
 }
 
 #pragma mark - 将 UIColor转化我 UIImage
-+ (UIImage *)renderImageWithColor:(UIColor *)color inSize:(CGSize)size
++ (UIImage *)whl_renderImageWithColor:(UIColor *)color inSize:(CGSize)size
 {
     CGRect rect = CGRectMake(0.0f, 0.0f, size.width, size.height);
     UIGraphicsBeginImageContext(rect.size);
@@ -276,7 +291,7 @@
 }
 
 //等比例压缩
-- (UIImage *)imageCompressForSize:(UIImage *)sourceImage targetSize:(CGSize)size
+- (UIImage *)whl_imageCompressForSize:(UIImage *)sourceImage targetSize:(CGSize)size
 {
     UIImage *newImage = nil;
     CGSize imageSize = sourceImage.size;
@@ -323,7 +338,7 @@
     return newImage;
 }
 
-- (UIImage *)imageCompressForWidth:(UIImage *)sourceImage targetWidth:(CGFloat)defineWidth
+- (UIImage *)whl_imageCompressForWidth:(UIImage *)sourceImage targetWidth:(CGFloat)defineWidth
 {
     UIImage *newImage = nil;
     CGSize imageSize = sourceImage.size;
@@ -367,6 +382,186 @@
 
     UIGraphicsEndImageContext();
     return newImage;
+}
+
+/// 获取图片压缩后的二进制数据,如果图片大小超过bytes时,会对图片进行等比例缩小尺寸处理    会自动进行png检测,从而保持alpha通道
+/// @param bytes  二进制数据的大小上限,0代表不限制
+/// @param compressionQuality  压缩后图片质量,取值为0...1,值越小,图片质量越差,压缩比越高,二进制大小越小
+- (NSData *)whl_imageDataThatFitBytes:(NSUInteger)bytes compressionQuality:(CGFloat)compressionQuality {
+    BOOL isPng = self.whl_isPngImage;
+    NSData *data;
+    if (isPng) {
+        data = [self imageDataOfPngThatFitBytes:bytes];
+    } else {
+        data = [self imageDataOfJpgThatFitBytes:bytes withCompressionQuality:compressionQuality];
+    }
+    return data;
+}
+
+- (NSData *)imageDataOfPngThatFitBytes:(NSUInteger)bytes {
+    NSData *data = UIImagePNGRepresentation(self);
+    NSUInteger len = data.length;
+    if (bytes != 0 && len > bytes) {
+        //可以简单认为压缩后的大小与像素点数量成正比
+        CGFloat factor = 0.9 * sqrt(1.0 * bytes / len);//由于只是近似计算,因此再乘上0.9系数,让压缩后的值再小点
+        CGSize size = self.size;
+        size.width *= factor;
+        size.height *= factor;
+        UIImage *image = [self whl_imageWithCanvasSize:size];
+        data = [image imageDataOfPngThatFitBytes:bytes];
+    }
+    return data;
+}
+
+- (NSData *)imageDataOfJpgThatFitBytes:(NSUInteger)bytes withCompressionQuality:(CGFloat)compressionQuality {
+    NSData *data = UIImageJPEGRepresentation(self, compressionQuality);
+    NSUInteger len = data.length;
+    if (bytes != 0 && len > bytes) {
+        //可以简单认为压缩后的大小与像素点数量成正比
+        CGFloat factor = 0.9 * sqrt(1.0 * bytes / len);//由于只是近似计算,因此再乘上0.9系数,让压缩后的值再小点
+        CGSize size = self.size;
+        size.width *= factor;
+        size.height *= factor;
+        UIImage *image = [self whl_imageWithCanvasSize:size];
+        data = [image imageDataOfJpgThatFitBytes:bytes withCompressionQuality:compressionQuality];
+    }
+    return data;
+}
+
+@end
+
+@implementation UIImage (WHLImageSize)
+
+- (CGSize)sizeWithMaxRelativeSize:(CGSize)size isMax:(BOOL)isMax {
+    CGSize imageSize = self.size;
+    CGSize resultSize = CGSizeZero;
+    if (size.width == 0 && size.height != 0) {
+        resultSize.height = size.height;
+        resultSize.width = imageSize.width / imageSize.height * resultSize.height;
+        return resultSize;
+    } else if (size.width != 0 && size.height == 0) {
+        resultSize.width = size.width;
+        resultSize.height = resultSize.width * imageSize.height / imageSize.width;
+        return resultSize;
+    } else if (size.width == 0 && size.height == 0) {
+        return self.size;
+    }
+    if ((imageSize.width / imageSize.height >= size.width / size.height && isMax) || (imageSize.width / imageSize.height < size.width / size.height && !isMax)) {
+        resultSize.height = size.height;
+        resultSize.width = imageSize.width / imageSize.height * resultSize.height;
+        return resultSize;
+    } else {
+        resultSize.width = size.width;
+        resultSize.height = resultSize.width * imageSize.height / imageSize.width;
+        return resultSize;
+    }
+    return resultSize;
+}
+
+/// 返回最大相对尺寸。x/y 为0时，尺寸不受约束
+/// @param size 尺寸
+- (CGSize)whl_sizeWithMaxRelativeSize:(CGSize)size {
+    CGSize resize = [self sizeWithMaxRelativeSize:size isMax:YES];
+    return resize;
+}
+
+/// 返回最小相对尺寸。x/y 为0时，尺寸不受约束
+/// @param size 尺寸
+- (CGSize)whl_sizeWithMinRelativeSize:(CGSize)size {
+    CGSize resize = [self sizeWithMaxRelativeSize:size isMax:NO];
+    return resize;
+}
+
+/// 将图片缩放到指定的CGSize大小
+/// @param size 要缩放到的尺寸
+/// @param scale 比例
+- (UIImage *)whl_imageWithCanvasSize:(CGSize)size scale:(CGFloat)scale {
+    size.width *= scale;
+    size.height *= scale;
+    UIImage *scaledImage = [self whl_imageWithCanvasSize:size];
+    return scaledImage;
+}
+
+- (UIImage *)whl_imageWithCanvasSize:(CGSize)size {
+    UIImage *image = [self copy];
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
+}
+
+/// 矫正图片 （相机拍照之后的图片可能需要矫正一下再使用）
+- (UIImage *)whl_fixOrientation {
+    UIImage *image = [self copy];
+    if (image.imageOrientation == UIImageOrientationUp) {
+        return image;
+    }
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    switch (image.imageOrientation) {
+        case UIImageOrientationDown:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, image.size.width, image.size.height);
+            transform = CGAffineTransformRotate(transform, M_PI);
+            break;
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+            transform = CGAffineTransformTranslate(transform, image.size.width, 0);
+            transform = CGAffineTransformRotate(transform, M_PI_2);
+            break;
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, 0, image.size.height);
+            transform = CGAffineTransformRotate(transform, -M_PI_2);
+            break;
+        default:
+            break;
+    }
+    switch (image.imageOrientation) {
+        case UIImageOrientationUpMirrored:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, image.size.width, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, image.size.height, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+        default:
+            break;
+    }
+    CGContextRef ctx = CGBitmapContextCreate(NULL, image.size.width, image.size.height,
+                                             CGImageGetBitsPerComponent(image.CGImage), 0,
+                                             CGImageGetColorSpace(image.CGImage),
+                                             CGImageGetBitmapInfo(image.CGImage));
+    CGContextConcatCTM(ctx, transform);
+    switch (image.imageOrientation) {
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            // Grr...
+            CGContextDrawImage(ctx, CGRectMake(0, 0, image.size.height, image.size.width), image.CGImage);
+            break;
+        default:
+            CGContextDrawImage(ctx, CGRectMake(0, 0, image.size.width, image.size.height), image.CGImage);
+            break;
+    }
+    CGImageRef cgimg = CGBitmapContextCreateImage(ctx);
+    UIImage *img = [UIImage imageWithCGImage:cgimg];
+    CGContextRelease(ctx);
+    CGImageRelease(cgimg);
+    return img;
+}
+
+/// 返回图片在内存里的像素点所占的内存大小,单位为字节(Byte) 1kb = 1024btye
+- (NSUInteger)whl_lengthOfRawData {
+    CGDataProviderRef providerRef = CGImageGetDataProvider(self.CGImage);
+    CFDataRef dataRef = CGDataProviderCopyData(providerRef);
+    CFIndex len = CFDataGetLength(dataRef);
+    CFRelease(dataRef);
+    return (NSUInteger)len;
 }
 
 @end

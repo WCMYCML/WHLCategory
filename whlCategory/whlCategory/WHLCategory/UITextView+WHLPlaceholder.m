@@ -37,9 +37,9 @@ static const void *const WHLWZPlaceholderKey = &WHLWZPlaceholderKey;
     return [self placeholderLabelIfLoaded].text;
 }
 
-- (UIColor *)placeholderColor
-{
+- (UIColor *)whl_placeholderColor{
     return [self placeholderLabelIfLoaded].textColor;
+
 }
 
 - (void)setWhl_placeholderColor:(UIColor *)whl_placeholderColor
@@ -214,6 +214,31 @@ static const void *const WHLWZPlaceholderKey = &WHLWZPlaceholderKey;
             [_observedTextView placeholderLabelIfLoaded].hidden = length > 0;
         }
     }
+}
+
+@end
+
+@implementation UITextView (WHLRange)
+
+/// 获取光标位置
+- (NSRange)whl_selectedRange {
+    UITextPosition *beginning = self.beginningOfDocument;
+    UITextRange *selectedRange = self.selectedTextRange;
+    UITextPosition *selectionStart = selectedRange.start;
+    UITextPosition *selectionEnd = selectedRange.end;
+    const NSInteger location = [self offsetFromPosition:beginning toPosition:selectionStart];
+    const NSInteger length = [self offsetFromPosition:selectionStart toPosition:selectionEnd];
+    return NSMakeRange(location, length);
+}
+
+/// 设置光标位置
+/// @param range 光标位置
+- (void)whl_setSelectedRange:(NSRange)range {
+    UITextPosition *beginning = self.beginningOfDocument;
+    UITextPosition *startPosition = [self positionFromPosition:beginning offset:range.location];
+    UITextPosition *endPosition = [self positionFromPosition:beginning offset:range.location + range.length];
+    UITextRange *selectionRange = [self textRangeFromPosition:startPosition toPosition:endPosition];
+    [self setSelectedTextRange:selectionRange];
 }
 
 @end

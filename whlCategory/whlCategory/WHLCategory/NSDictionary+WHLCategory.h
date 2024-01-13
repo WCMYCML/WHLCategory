@@ -33,4 +33,11 @@
 
 
 
+/// 字典转Json字符串
+- (NSString *)whl_dictionaryToJsonString;
+
+/// 字典转Json字符串（无空格和回车）
+- (NSString *)whl_dictionaryToJsonStringNoSpace;
+
+
 @end
